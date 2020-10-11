@@ -4,11 +4,15 @@
   "name": "Homepage",
   "description": "New tab extension",
   "version": "0.0.1",
-
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
   "chrome_url_overrides" : {
     "newtab": "index.html"
   },
   "content_security_policy": "script-src 'self' 'sha256-CvDLW0U8vVt2IWcTQ0a9moAklDz2YwZZ8NiPfGor2rY='; object-src 'self'",
   "permissions": [
+    "bookmarks"
   ]
 }
