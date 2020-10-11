@@ -1,3 +1,3 @@
-chrome.bookmarks.getSubTree("417", (tree) => {
+chrome.bookmarks.getTree((tree) => {
     console.log(tree);
 })

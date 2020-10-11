@@ -1,9 +1,10 @@
 import React from "react";
-import "./App.css";
-import { BookmarkList } from "./components/BookmarkList/BookmarkList";
+import {BookmarkGrid} from "./components/BookmarkGrid/BookmarkGrid";
+
+const bookmarkTreeIds = ["419", "425"];
 
 function App() {
-  return <BookmarkList />;
+  return <BookmarkGrid treeIds={bookmarkTreeIds} />;
 }
 
 export default App;

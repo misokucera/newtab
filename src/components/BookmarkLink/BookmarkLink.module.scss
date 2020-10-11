@@ -1,0 +1,49 @@
+.link {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.5em;
+    text-decoration: none;
+    color: #444444;
+
+    &:hover {
+        background: #3b71cd;
+        color: #ffffff;
+        border-radius: 0.2em;
+    }
+}
+
+.favicon {
+    margin-right: 1em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: #ffffff;
+    padding: 0.15em;
+    border-radius: 0.15em;
+}
+
+.text {
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+.title {
+    font-weight: bolder;
+    margin: 0 0 0.3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.url {
+    font-size: 0.8em;
+    margin: 0;
+    color: #888888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .link:hover & {
+        color: #a1c6ff;
+    }
+}

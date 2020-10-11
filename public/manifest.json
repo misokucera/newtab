@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Homepage",
+  "name": "New tab",
   "description": "New tab extension",
   "version": "0.0.1",
   "background": {

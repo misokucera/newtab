@@ -1,10 +1,14 @@
 import * as React from "react";
 import { BookmarkLink } from "../BookmarkLink/BookmarkLink";
-import styles from "./BookmarkList.module.css";
-import {useBookmarkTree} from "../../hooks/useBookmarkTree";
+import styles from "./BookmarkList.module.scss";
+import { useBookmarkTree } from "../../hooks/useBookmarkTree";
 
-export const BookmarkList = () => {
-  const bookmarks = useBookmarkTree("417");
+type Props = {
+  treeId: string;
+};
+
+export const BookmarkList = ({ treeId }: Props) => {
+  const bookmarks = useBookmarkTree(treeId);
 
   return (
     <div className={styles.list}>
