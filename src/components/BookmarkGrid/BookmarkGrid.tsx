@@ -3,15 +3,15 @@ import React from "react";
 import { BookmarkList } from "../BookmarkList/BookmarkList";
 
 type Props = {
-  treeIds: string[];
+    treeIds: string[];
 };
 
 export const BookmarkGrid = ({ treeIds }: Props) => {
-  return (
-    <div className={styles.grid}>
-      {treeIds.map((treeId) => (
-        <BookmarkList treeId={treeId} />
-      ))}
-    </div>
-  );
+    return (
+        <div className={styles.grid}>
+            {treeIds.map((treeId) => (
+                <BookmarkList treeId={treeId} key={treeId} />
+            ))}
+        </div>
+    );
 };

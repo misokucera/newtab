@@ -1,10 +1,20 @@
-import React from "react";
-import {BookmarkGrid} from "./components/BookmarkGrid/BookmarkGrid";
-
-const bookmarkTreeIds = ["419", "425"];
+import React, { useState } from "react";
+import { BookmarkGrid } from "./components/BookmarkGrid/BookmarkGrid";
+import GroupSelectDialog from "./components/ui/GroupSelectDialog/GroupSelectDialog";
 
 function App() {
-  return <BookmarkGrid treeIds={bookmarkTreeIds} />;
+    const [groupIds, setGroupIds] = useState<string[]>([]);
+
+    const handleGroupSelect = (groupId: string) => {
+        setGroupIds([...groupIds, groupId]);
+    };
+
+    return (
+        <div>
+            <GroupSelectDialog onSelect={handleGroupSelect} />
+            <BookmarkGrid treeIds={groupIds} />
+        </div>
+    );
 }
 
 export default App;
