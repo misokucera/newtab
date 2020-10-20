@@ -17,7 +17,6 @@ export function useBookmarks(groupId: string): Bookmark[] {
         if (chrome !== undefined && chrome.bookmarks !== undefined) {
             // @ts-ignore
             chrome.bookmarks.getSubTree(groupId, (tree) => {
-                console.log(tree[0].children);
                 const bookmarks = tree[0].children
                     .filter((bookmark: any) => bookmark.url)
                     .map((bookmark: any) => ({
