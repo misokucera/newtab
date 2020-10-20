@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BookmarkGrid } from "./components/BookmarkGrid/BookmarkGrid";
 import GroupSelectDialog from "./components/ui/GroupSelectDialog/GroupSelectDialog";
+import { GroupProvider } from "./contexts/GroupContext";
 
 function App() {
     const [groupIds, setGroupIds] = useState<string[]>([]);
@@ -34,8 +35,10 @@ function App() {
 
     return (
         <div>
-            <GroupSelectDialog onSelect={handleGroupSelect} />
-            <BookmarkGrid treeIds={groupIds} />
+            <GroupProvider>
+                <GroupSelectDialog onSelect={handleGroupSelect} />
+                <BookmarkGrid treeIds={groupIds} />
+            </GroupProvider>
         </div>
     );
 }

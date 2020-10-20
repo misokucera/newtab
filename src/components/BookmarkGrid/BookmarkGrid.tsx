@@ -1,5 +1,5 @@
 import styles from "./BookmarkGrid.module.scss";
-import React from "react";
+import React, {useContext} from "react";
 import { BookmarkList } from "../BookmarkList/BookmarkList";
 
 type Props = {
