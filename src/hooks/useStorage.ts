@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
+import { isDev } from "../services/environment";
 
 export function useStorage(): any {
     const [groups, setInnerGroups] = useState<string[]>([]);
 
-    // @ts-ignore
     useEffect(() => {
-        //@ts-ignore
-        if (chrome !== undefined && chrome.storage !== undefined) {
-        //     @ts-ignore
-            chrome.storage.sync.get(["groups"], function (result) {
+        if (!isDev()) {
+            chrome.storage.sync.get(["groups"], function (result: any) {
                 console.log("Value currently is " + result.groups);
                 setInnerGroups(result.groups);
             });
@@ -16,9 +14,7 @@ export function useStorage(): any {
     }, []);
 
     const setGroups = (groupIds: string[]) => {
-        // @ts-ignore
-        if (chrome !== undefined && chrome.storage !== undefined) {
-            // @ts-ignore
+        if (!isDev()) {
             chrome.storage.sync.set({groups: groupIds}, function () {
                 console.log("Value is set to " + groupIds);
             });

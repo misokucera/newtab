@@ -8,15 +8,14 @@ import {
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { TreeSelect } from "../TreeSelect/TreeSelect";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useGroups } from "../../../hooks/useGroups";
+import styles from "./GroupSelectDialog.module.scss";
+import { GroupContext } from "../../../contexts/GroupContext";
 
-type Props = {
-    onSelect?: (groupId: string) => void;
-};
-
-const GroupSelectDialog = ({ onSelect }: Props) => {
+const GroupSelectDialog = () => {
     const groupTree = useGroups();
+    const { addGroup } = useContext(GroupContext);
 
     const [open, setOpen] = useState(false);
     const [selectedGroup, setSelectedGroup] = useState("");
@@ -31,9 +30,7 @@ const GroupSelectDialog = ({ onSelect }: Props) => {
     };
 
     const handleSubmit = () => {
-        if (onSelect) {
-            onSelect(selectedGroup);
-        }
+        addGroup(selectedGroup);
         handleDialogClose();
     };
 
@@ -47,16 +44,20 @@ const GroupSelectDialog = ({ onSelect }: Props) => {
 
     return (
         <>
-            <Fab color="primary" aria-label="add" onClick={handleDialogOpen}>
-                <AddIcon />
-            </Fab>
+            <div className={styles.button}>
+                <Fab
+                    color="primary"
+                    aria-label="add"
+                    onClick={handleDialogOpen}
+                    className={styles.button}
+                >
+                    <AddIcon />
+                </Fab>
+            </div>
             <Dialog open={open} onClose={handleDialogClose}>
                 <DialogTitle>Select bookmark directory</DialogTitle>
                 <DialogContent>
-                    <TreeSelect
-                        root={groupTree}
-                        onSelect={handleSelection}
-                    />
+                    <TreeSelect root={groupTree} onSelect={handleSelection} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleDialogClose}>Cancel</Button>

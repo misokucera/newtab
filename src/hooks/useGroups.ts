@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { mockedBookmarkDirectories } from "../api/mocks/bookmarks.mock";
+import { getMockedGroups } from "../api/mocks/bookmarks.mock";
+import { isDev } from "../services/environment";
 
 export type BookmarkTreeNode = {
     id: string;
@@ -32,12 +33,10 @@ export function useGroups(): BookmarkTreeNode | null {
     };
 
     useEffect(() => {
-        // @ts-ignore
-        if (chrome !== undefined && chrome.bookmarks !== undefined) {
-            // @ts-ignore
-            chrome.bookmarks.getTree((trees) => parseTrees(trees));
+        if (isDev()) {
+            setTreeNode(getMockedGroups());
         } else {
-            setTreeNode(JSON.parse(mockedBookmarkDirectories));
+            chrome.bookmarks.getTree((trees: any) => parseTrees(trees));
         }
     }, []);
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { bookmarksSubtreeMockedData } from "../api/mocks/bookmarks.mock";
+import { getMockedBookmarks } from "../api/mocks/bookmarks.mock";
+import { isDev } from "../services/environment";
 
 export type Bookmark = {
     id: string;
@@ -11,12 +12,11 @@ export type Bookmark = {
 export function useBookmarks(groupId: string): Bookmark[] {
     const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
 
-    // @ts-ignore
     useEffect(() => {
-        //@ts-ignore
-        if (chrome !== undefined && chrome.bookmarks !== undefined) {
-            // @ts-ignore
-            chrome.bookmarks.getSubTree(groupId, (tree) => {
+        if (isDev()) {
+            setBookmarks(getMockedBookmarks());
+        } else {
+            chrome.bookmarks.getSubTree(groupId, (tree: any) => {
                 const bookmarks = tree[0].children
                     .filter((bookmark: any) => bookmark.url)
                     .map((bookmark: any) => ({
@@ -28,18 +28,8 @@ export function useBookmarks(groupId: string): Bookmark[] {
 
                 setBookmarks(bookmarks);
             });
-        } else {
-            const bookmarks = JSON.parse(bookmarksSubtreeMockedData).map(
-                (bookmark: any) => ({
-                    id: bookmark.id,
-                    title: bookmark.title,
-                    url: bookmark.url,
-                    index: bookmark.index,
-                })
-            );
-            setBookmarks(bookmarks);
         }
-    }, []);
+    }, [groupId]);
 
     return bookmarks;
 }

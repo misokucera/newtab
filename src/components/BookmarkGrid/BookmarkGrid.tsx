@@ -1,15 +1,14 @@
 import styles from "./BookmarkGrid.module.scss";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { BookmarkList } from "../BookmarkList/BookmarkList";
+import { GroupContext } from "../../contexts/GroupContext";
 
-type Props = {
-    treeIds: string[];
-};
+export const BookmarkGrid = () => {
+    const { groups } = useContext(GroupContext);
 
-export const BookmarkGrid = ({ treeIds }: Props) => {
     return (
         <div className={styles.grid}>
-            {treeIds.map((treeId) => (
+            {groups.map((treeId) => (
                 <BookmarkList treeId={treeId} key={treeId} />
             ))}
         </div>
