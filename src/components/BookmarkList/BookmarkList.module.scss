@@ -5,13 +5,21 @@
     min-width: 15em;
     width: 30%;
     border-radius: 3px;
+    background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.5));
 }
 
 .title {
     margin-top: 0;
-    margin-bottom: 2em;
+    margin-bottom: 0;
     margin-left: 0.7em;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: #888888;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
 }

@@ -1,14 +1,13 @@
 .link {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     padding: 0.5em;
     text-decoration: none;
     color: #444444;
+    border-radius: 0.2em;
 
     &:hover {
-        background: #3b71cd;
-        color: #ffffff;
-        border-radius: 0.2em;
+        background: #efefef;
     }
 }
 
@@ -24,26 +23,11 @@
 
 .text {
     overflow: hidden;
-    line-height: 1.2;
 }
 
 .title {
-    font-weight: bolder;
-    margin: 0 0 0.3em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.url {
-    font-size: 0.8em;
     margin: 0;
-    color: #888888;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    .link:hover & {
-        color: #a1c6ff;
-    }
 }

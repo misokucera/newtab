@@ -12,13 +12,8 @@ export const BookmarkLink = ({ bookmark: { url, title } }: Props) => {
         <a href={url} className={styles.link}>
             <img src={getFaviconUrl(url)} alt="" className={styles.favicon} />
             <div className={styles.text}>
-                {title && (
-                    <p className={styles.title} title={title}>
-                        {title}
-                    </p>
-                )}
-                <p className={styles.url} title={url}>
-                    {url}
+                <p className={styles.title} title={title || url}>
+                    {title || url}
                 </p>
             </div>
         </a>

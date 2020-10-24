@@ -28,6 +28,8 @@ export const GroupProvider = ({ children }: Props) => {
             chrome.storage.sync.get(["groups"], function (result) {
                 setGroups(result.groups);
             });
+        } else {
+            setGroups(["1", "2"]);
         }
     }, []);
 
