@@ -7,7 +7,7 @@ import {
     Fab,
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import { TreeSelect } from "../TreeSelect/TreeSelect";
+import { TreeSelect } from "../../ui/TreeSelect/TreeSelect";
 import React, { useContext, useState } from "react";
 import { useGroups } from "../../../hooks/useGroups";
 import styles from "./GroupSelectDialog.module.scss";

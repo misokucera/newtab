@@ -39,7 +39,6 @@ export function useBookmarks(
                     }));
 
                 setBookmarks(bookmarks);
-
                 setTitle(tree.title);
             });
         }

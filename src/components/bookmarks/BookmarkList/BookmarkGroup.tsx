@@ -1,12 +1,12 @@
 import * as React from "react";
 import { BookmarkLink } from "../BookmarkLink/BookmarkLink";
 import styles from "./BookmarkList.module.scss";
-import { useBookmarks } from "../../hooks/useBookmarks";
+import { useBookmarks } from "../../../hooks/useBookmarks";
 import { useContext, useState } from "react";
-import { GroupContext } from "../../contexts/GroupContext";
+import { GroupContext } from "../../../contexts/GroupContext";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import { AlertDialog } from "../ui/AlertDialog/AlertDialog";
+import { AlertDialog } from "../../ui/AlertDialog/AlertDialog";
 
 type Props = {
     treeId: string;
