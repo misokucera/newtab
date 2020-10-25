@@ -12,8 +12,8 @@ type Props = {
     treeId: string;
 };
 
-export const BookmarkList = ({ treeId }: Props) => {
-    const bookmarks = useBookmarks(treeId);
+export const BookmarkGroup = ({ treeId }: Props) => {
+    const { bookmarks, title } = useBookmarks(treeId);
     const { removeGroup } = useContext(GroupContext);
     const [openRemoveDialog, setOpenRemoveDialog] = useState(false);
 
@@ -32,7 +32,7 @@ export const BookmarkList = ({ treeId }: Props) => {
     return (
         <div className={styles.list}>
             <div className={styles.header}>
-                <h2 className={styles.title}>Záložky</h2>
+                <h2 className={styles.title}>{title}</h2>
                 <IconButton
                     aria-label="delete"
                     onClick={handleOpenRemoveDialog}

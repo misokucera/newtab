@@ -9,15 +9,27 @@ export type Bookmark = {
     index: number;
 };
 
-export function useBookmarks(groupId: string): Bookmark[] {
+// TODO: add missing types
+
+export function useBookmarks(
+    groupId: string
+): { bookmarks: Bookmark[]; title: string } {
     const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
+    const [title, setTitle] = useState<string>("");
 
     useEffect(() => {
         if (isDev()) {
             setBookmarks(getMockedBookmarks());
+            setTitle("Nejaký dlhší názov");
         } else {
-            chrome.bookmarks.getSubTree(groupId, (tree: any) => {
-                const bookmarks = tree[0].children
+            chrome.bookmarks.getSubTree(groupId, (trees: any) => {
+                const tree = trees[0];
+
+                if (!tree) {
+                    return;
+                }
+
+                const bookmarks = tree.children
                     .filter((bookmark: any) => bookmark.url)
                     .map((bookmark: any) => ({
                         id: bookmark.id,
@@ -27,9 +39,11 @@ export function useBookmarks(groupId: string): Bookmark[] {
                     }));
 
                 setBookmarks(bookmarks);
+
+                setTitle(tree.title);
             });
         }
     }, [groupId]);
 
-    return bookmarks;
+    return { bookmarks, title };
 }
