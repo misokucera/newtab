@@ -1,10 +1,8 @@
 .list {
-    margin: 1em;
-    padding: 1em;
-    max-width: 30em;
-    min-width: 15em;
-    width: 30%;
-    border-radius: 3px;
+    margin: 0.5em;
+    padding: 0.5em;
+    width: 20em;
+    border-radius: 0.3em;
     background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.5));
 }
 
@@ -13,8 +11,12 @@
     margin-bottom: 0;
     margin-left: 0.7em;
     text-transform: uppercase;
-    font-size: 0.9em;
+    font-size: 0.8em;
+    font-weight: normal;
     color: #888888;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .header {
@@ -22,4 +24,13 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1em;
+}
+
+.actions {
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    .list:hover & {
+        opacity: 1;
+    }
 }

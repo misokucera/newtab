@@ -20,7 +20,7 @@ export function useBookmarks(
     useEffect(() => {
         if (isDev()) {
             setBookmarks(getMockedBookmarks());
-            setTitle("Nejaký dlhší názov");
+            setTitle("Nástroje");
         } else {
             chrome.bookmarks.getSubTree(groupId, (trees: any) => {
                 const tree = trees[0];
