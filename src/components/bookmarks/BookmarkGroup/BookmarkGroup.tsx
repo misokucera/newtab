@@ -38,7 +38,7 @@ export const BookmarkGroup = ({ treeId }: Props) => {
                         aria-label="delete"
                         onClick={handleOpenRemoveDialog}
                     >
-                        <CloseIcon />
+                        <CloseIcon fontSize="small" />
                     </IconButton>
                 </div>
             </div>
