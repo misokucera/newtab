@@ -8,6 +8,7 @@ type GroupContextType = {
     groups: string[];
     addGroup: (groupId: string) => void;
     removeGroup: (groupId: string) => void;
+    reorderGroups: (orderedGroups: string[]) => void;
 };
 
 type Props = {
@@ -18,6 +19,7 @@ export const GroupContext = createContext<GroupContextType>({
     groups: [],
     addGroup: () => {},
     removeGroup: () => {},
+    reorderGroups: () => {}
 });
 
 export const GroupProvider = ({ children }: Props) => {
@@ -52,12 +54,19 @@ export const GroupProvider = ({ children }: Props) => {
         storeGroups(filteredGroups);
     };
 
+    // TODO: only reorder, not set groups
+    const reorderGroups = (orderedGroups: string[]) => {
+        setGroups(orderedGroups);
+        storeGroups(orderedGroups);
+    };
+
     return (
         <GroupContext.Provider
             value={{
                 groups,
                 addGroup,
                 removeGroup,
+                reorderGroups
             }}
         >
             {children}
