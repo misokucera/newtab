@@ -1,7 +1,7 @@
 import React from "react";
 import { getFaviconUrl } from "../../../services/favicons";
 import styles from "./BookmarkLink.module.scss";
-import { Bookmark } from "../../../hooks/useBookmarks";
+import { Bookmark } from "../../../hooks/useGroup";
 
 type Props = {
     bookmark: Bookmark;

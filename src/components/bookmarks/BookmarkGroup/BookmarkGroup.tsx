@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BookmarkLink } from "../BookmarkLink/BookmarkLink";
 import styles from "./BookmarkGroup.module.scss";
-import { useBookmarks } from "../../../hooks/useBookmarks";
+import { useGroup } from "../../../hooks/useGroup";
 import { useContext, useState } from "react";
 import { GroupContext } from "../../../contexts/GroupContext";
 import { IconButton } from "@material-ui/core";
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const BookmarkGroup = ({ treeId }: Props) => {
-    const { bookmarks, title } = useBookmarks(treeId);
+    const { bookmarks, title } = useGroup(treeId);
     const { removeGroup } = useContext(GroupContext);
     const [openRemoveDialog, setOpenRemoveDialog] = useState(false);
 
