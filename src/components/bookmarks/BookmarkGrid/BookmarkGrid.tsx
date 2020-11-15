@@ -4,18 +4,6 @@ import { BookmarkGroup } from "../BookmarkGroup/BookmarkGroup";
 import { GroupContext } from "../../../contexts/GroupContext";
 import SortableList from "../../ui/SortableList/SortableList";
 
-const reorder = (
-    list: string[],
-    startIndex: number,
-    endIndex: number
-): string[] => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-
-    return result;
-};
-
 export const BookmarkGrid = () => {
     const { groups, reorderGroups } = useContext(GroupContext);
 
@@ -32,7 +20,13 @@ export const BookmarkGrid = () => {
         <SortableList
             direction="horizontal"
             sortableItems={sortableGroups}
-            itemContent={(treeId) => <BookmarkGroup treeId={treeId} key={treeId} />}
+            itemContent={(treeId, dragHandleProps) => (
+                <BookmarkGroup
+                    treeId={treeId}
+                    key={treeId}
+                    dragHandleProps={dragHandleProps}
+                />
+            )}
             onDragEnd={handleDragEnd}
         />
     );

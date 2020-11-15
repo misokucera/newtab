@@ -1,8 +1,8 @@
 import {
     DragDropContext,
-    Draggable,
+    Draggable, DraggableProvidedDragHandleProps,
     Droppable,
-    DropResult,
+    DropResult
 } from "react-beautiful-dnd";
 import styles from "./SortableList.module.scss";
 import * as React from "react";
@@ -12,10 +12,12 @@ export type SortableItem = {
     item: any;
 };
 
+export type DragHandleProps = DraggableProvidedDragHandleProps;
+
 type Props = {
     direction: 'vertical' | 'horizontal';
     sortableItems: SortableItem[];
-    itemContent: (item: any) => React.ReactNode;
+    itemContent: (item: any, dragHandle?: DragHandleProps) => React.ReactNode;
     onDragEnd?: (items: any[]) => void;
 };
 
@@ -67,9 +69,8 @@ const SortableList = ({ direction, sortableItems, itemContent, onDragEnd }: Prop
                                     <div
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
                                     >
-                                        {itemContent(sortableItem.item)}
+                                        {itemContent(sortableItem.item, provided.dragHandleProps)}
                                     </div>
                                 )}
                             </Draggable>

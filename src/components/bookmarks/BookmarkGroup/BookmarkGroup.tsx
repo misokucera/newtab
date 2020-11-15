@@ -7,13 +7,14 @@ import { GroupContext } from "../../../contexts/GroupContext";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { AlertDialog } from "../../ui/AlertDialog/AlertDialog";
-import SortableList, { SortableItem } from "../../ui/SortableList/SortableList";
+import SortableList, { DragHandleProps, SortableItem } from "../../ui/SortableList/SortableList";
 
 type Props = {
     treeId: string;
+    dragHandleProps?: DragHandleProps;
 };
 
-export const BookmarkGroup = ({ treeId }: Props) => {
+export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
     const { bookmarks, title } = useGroup(treeId);
     const { removeGroup } = useContext(GroupContext);
     const [openRemoveDialog, setOpenRemoveDialog] = useState(false);
@@ -39,7 +40,7 @@ export const BookmarkGroup = ({ treeId }: Props) => {
 
     return (
         <div className={styles.list}>
-            <div className={styles.header}>
+            <div className={styles.header} {...dragHandleProps}>
                 <h2 className={styles.title}>{title}</h2>
                 <div className={styles.actions}>
                     <IconButton
@@ -54,8 +55,8 @@ export const BookmarkGroup = ({ treeId }: Props) => {
                 <SortableList
                     direction="vertical"
                     sortableItems={sortableBookmarks}
-                    itemContent={(bookmark) => (
-                        <BookmarkLink bookmark={bookmark} key={bookmark.id} />
+                    itemContent={(bookmark, dragHandleProps) => (
+                        <BookmarkLink bookmark={bookmark} key={bookmark.id} dragHandleProps={dragHandleProps} />
                     )}
                     onDragEnd={onDragEnd}
                 />
