@@ -11,7 +11,7 @@ export const BookmarkGrid = () => {
         reorderGroups(sortedGroups);
     };
 
-    const sortableGroups = groups.map((group) => ({
+    const sortableGroups = groups.map((group, index) => ({
         id: group,
         item: group,
     }));

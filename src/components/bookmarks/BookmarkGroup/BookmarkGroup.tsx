@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
-    const { bookmarks, title } = useGroup(treeId);
+    const { bookmarks, title, reorderBookmarks } = useGroup(treeId);
     const { removeGroup } = useContext(GroupContext);
     const [openRemoveDialog, setOpenRemoveDialog] = useState(false);
 
@@ -31,7 +31,12 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
         removeGroup(treeId);
     };
 
-    const onDragEnd = (sortedItems: Bookmark[]) => {};
+    const onDragEnd = (sortedItems: Bookmark[]) => {
+        reorderBookmarks(sortedItems.map((item, index) => ({
+            ...item,
+            index
+        })));
+    };
 
     const sortableBookmarks: SortableItem[] = bookmarks.map((bookmark) => ({
         id: bookmark.id,

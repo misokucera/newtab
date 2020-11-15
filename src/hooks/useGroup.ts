@@ -22,7 +22,7 @@ const mapTreeToBookmark = ({ id, title, url, index }: any) => ({
 
 export function useGroup(
     groupId: string
-): { bookmarks: Bookmark[]; title: string } {
+): { bookmarks: Bookmark[]; title: string, reorderBookmarks: (bookmarks: Bookmark[]) => void } {
     const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
     const [title, setTitle] = useState<string>("");
 
@@ -68,5 +68,18 @@ export function useGroup(
         }
     }, [groupId]);
 
-    return { bookmarks, title };
+    const reorderBookmarks = (bookmarks: Bookmark[]) => {
+        setBookmarks(bookmarks);
+
+        bookmarks.forEach(bookmark => {
+            if(!isDev()) {
+                chrome.bookmarks.move(bookmark.id, {
+                    parentId: groupId,
+                    index: bookmark.index
+                })
+            }
+        })
+    }
+
+    return { bookmarks, title, reorderBookmarks };
 }

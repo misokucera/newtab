@@ -1,8 +1,9 @@
 import {
     DragDropContext,
-    Draggable, DraggableProvidedDragHandleProps,
+    Draggable,
+    DraggableProvidedDragHandleProps,
     Droppable,
-    DropResult
+    DropResult,
 } from "react-beautiful-dnd";
 import styles from "./SortableList.module.scss";
 import * as React from "react";
@@ -15,7 +16,7 @@ export type SortableItem = {
 export type DragHandleProps = DraggableProvidedDragHandleProps;
 
 type Props = {
-    direction: 'vertical' | 'horizontal';
+    direction: "vertical" | "horizontal";
     sortableItems: SortableItem[];
     itemContent: (item: any, dragHandle?: DragHandleProps) => React.ReactNode;
     onDragEnd?: (items: any[]) => void;
@@ -33,7 +34,12 @@ const reorder = (
     return result;
 };
 
-const SortableList = ({ direction, sortableItems, itemContent, onDragEnd }: Props) => {
+const SortableList = ({
+    direction,
+    sortableItems,
+    itemContent,
+    onDragEnd,
+}: Props) => {
     const handleDragEnd = (result: DropResult) => {
         if (!result.destination) {
             return;
@@ -55,7 +61,9 @@ const SortableList = ({ direction, sortableItems, itemContent, onDragEnd }: Prop
             <Droppable droppableId="droppable" direction={direction}>
                 {(provided, snapshot) => (
                     <div
-                        className={direction === 'horizontal' ? styles.grid : ''}
+                        className={
+                            direction === "horizontal" ? styles.grid : ""
+                        }
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
@@ -70,7 +78,10 @@ const SortableList = ({ direction, sortableItems, itemContent, onDragEnd }: Prop
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                     >
-                                        {itemContent(sortableItem.item, provided.dragHandleProps)}
+                                        {itemContent(
+                                            sortableItem.item,
+                                            provided.dragHandleProps
+                                        )}
                                     </div>
                                 )}
                             </Draggable>
