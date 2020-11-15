@@ -2,12 +2,7 @@ import styles from "./BookmarkGrid.module.scss";
 import React, { useContext } from "react";
 import { BookmarkGroup } from "../BookmarkGroup/BookmarkGroup";
 import { GroupContext } from "../../../contexts/GroupContext";
-import {
-    DragDropContext,
-    Droppable,
-    Draggable,
-    DropResult,
-} from "react-beautiful-dnd";
+import SortableList from "../../ui/SortableList/SortableList";
 
 const reorder = (
     list: string[],
@@ -24,53 +19,21 @@ const reorder = (
 export const BookmarkGrid = () => {
     const { groups, reorderGroups } = useContext(GroupContext);
 
-    const onDragEnd = (result: DropResult) => {
-        if (!result.destination) {
-            return;
-        }
-
-        const orderedGroups = reorder(
-            groups,
-            result.source.index,
-            result.destination.index
-        );
-
-        reorderGroups(orderedGroups);
+    const handleDragEnd = (sortedGroups: string[]) => {
+        reorderGroups(sortedGroups);
     };
 
+    const sortableGroups = groups.map((group) => ({
+        id: group,
+        item: group,
+    }));
+
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="droppable" direction="horizontal">
-                {(provided, snapshot) => (
-                    <div
-                        className={styles.grid}
-                        ref={provided.innerRef}
-                        {...provided.droppableProps}
-                    >
-                        {groups.map((treeId, index) => (
-                            <Draggable
-                                key={treeId}
-                                draggableId={treeId}
-                                index={index}
-                            >
-                                {(provided, snapshot) => (
-                                    <div
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                    >
-                                        <BookmarkGroup
-                                            treeId={treeId}
-                                            key={treeId}
-                                        />
-                                    </div>
-                                )}
-                            </Draggable>
-                        ))}
-                        {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>
-        </DragDropContext>
+        <SortableList
+            direction="horizontal"
+            sortableItems={sortableGroups}
+            itemContent={(treeId) => <BookmarkGroup treeId={treeId} key={treeId} />}
+            onDragEnd={handleDragEnd}
+        />
     );
 };
