@@ -16,17 +16,19 @@ export const BookmarkGrid = () => {
     }));
 
     return (
-        <SortableList
-            direction="horizontal"
-            sortableItems={sortableGroups}
-            itemContent={(treeId, dragHandleProps) => (
-                <BookmarkGroup
-                    treeId={treeId}
-                    key={treeId}
-                    dragHandleProps={dragHandleProps}
-                />
-            )}
-            onDragEnd={handleDragEnd}
-        />
+        <div className="text-center">
+            <SortableList
+                direction="horizontal"
+                sortableItems={sortableGroups}
+                itemContent={(treeId, dragHandleProps) => (
+                    <BookmarkGroup
+                        treeId={treeId}
+                        key={treeId}
+                        dragHandleProps={dragHandleProps}
+                    />
+                )}
+                onDragEnd={handleDragEnd}
+            />
+        </div>
     );
 };
