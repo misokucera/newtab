@@ -1,4 +1,3 @@
-import styles from "./BookmarkGrid.module.scss";
 import React, { useContext } from "react";
 import { BookmarkGroup } from "../BookmarkGroup/BookmarkGroup";
 import { GroupContext } from "../../../contexts/GroupContext";
