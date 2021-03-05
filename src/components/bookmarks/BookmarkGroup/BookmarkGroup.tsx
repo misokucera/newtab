@@ -1,6 +1,5 @@
 import * as React from "react";
 import { BookmarkLink } from "../BookmarkLink/BookmarkLink";
-import styles from "./BookmarkGroup.module.scss";
 import { Bookmark, useGroup } from "../../../hooks/useGroup";
 import { useContext, useState } from "react";
 import { GroupContext } from "../../../contexts/GroupContext";
@@ -44,10 +43,10 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
     }));
 
     return (
-        <div className={styles.list}>
-            <div className={styles.header} {...dragHandleProps}>
-                <h2 className={styles.title}>{title}</h2>
-                <div className={styles.actions}>
+        <div className="group m-2 p-3 max-w-xs rounded bg-white">
+            <div className="flex items-center justify-between mb-2" {...dragHandleProps}>
+                <h2 className="p-3 my-0 uppercase text-sm font-normal text-gray-400 truncate">{title}</h2>
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                     <IconButton
                         aria-label="delete"
                         onClick={handleOpenRemoveDialog}

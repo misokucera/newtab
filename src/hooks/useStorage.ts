@@ -15,7 +15,7 @@ export function useStorage(): any {
 
     const setGroups = (groupIds: string[]) => {
         if (!isDev()) {
-            chrome.storage.sync.set({groups: groupIds}, function () {
+            chrome.storage.sync.set({ groups: groupIds }, function () {
                 console.log("Value is set to " + groupIds);
             });
         }

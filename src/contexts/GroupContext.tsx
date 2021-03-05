@@ -19,7 +19,7 @@ export const GroupContext = createContext<GroupContextType>({
     groups: [],
     addGroup: () => {},
     removeGroup: () => {},
-    reorderGroups: () => {}
+    reorderGroups: () => {},
 });
 
 export const GroupProvider = ({ children }: Props) => {
@@ -39,17 +39,17 @@ export const GroupProvider = ({ children }: Props) => {
         if (!isDev()) {
             chrome.storage.sync.set({ groups });
         }
-    }
+    };
 
     const addGroup = (groupId: string) => {
-        const filteredGroups = groups.filter(value => value !== groupId);
+        const filteredGroups = groups.filter((value) => value !== groupId);
         const updatedGroups = [...filteredGroups, groupId];
         setGroups(updatedGroups);
         storeGroups(updatedGroups);
     };
 
     const removeGroup = (groupId: string) => {
-        const filteredGroups = groups.filter(value => value !== groupId);
+        const filteredGroups = groups.filter((value) => value !== groupId);
         setGroups(filteredGroups);
         storeGroups(filteredGroups);
     };
@@ -66,7 +66,7 @@ export const GroupProvider = ({ children }: Props) => {
                 groups,
                 addGroup,
                 removeGroup,
-                reorderGroups
+                reorderGroups,
             }}
         >
             {children}

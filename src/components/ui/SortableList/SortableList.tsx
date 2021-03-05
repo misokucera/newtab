@@ -5,8 +5,8 @@ import {
     Droppable,
     DropResult,
 } from "react-beautiful-dnd";
-import styles from "./SortableList.module.scss";
 import * as React from "react";
+import cn from "classnames";
 
 export type SortableItem = {
     id: string;
@@ -61,9 +61,9 @@ const SortableList = ({
             <Droppable droppableId="droppable" direction={direction}>
                 {(provided, snapshot) => (
                     <div
-                        className={
-                            direction === "horizontal" ? styles.grid : ""
-                        }
+                        className={cn({
+                            "inline-flex": direction === "horizontal",
+                        })}
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >

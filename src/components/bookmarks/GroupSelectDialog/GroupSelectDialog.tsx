@@ -10,7 +10,6 @@ import AddIcon from "@material-ui/icons/Add";
 import { TreeSelect } from "../../ui/TreeSelect/TreeSelect";
 import React, { useContext, useState } from "react";
 import { useGroups } from "../../../hooks/useGroups";
-import styles from "./GroupSelectDialog.module.scss";
 import { GroupContext } from "../../../contexts/GroupContext";
 
 const GroupSelectDialog = () => {
@@ -44,12 +43,11 @@ const GroupSelectDialog = () => {
 
     return (
         <>
-            <div className={styles.button}>
+            <div className="fixed bottom-10 right-10">
                 <Fab
                     color="primary"
                     aria-label="add"
                     onClick={handleDialogOpen}
-                    className={styles.button}
                 >
                     <AddIcon />
                 </Fab>
