@@ -7,10 +7,10 @@ import {
     Fab,
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import { TreeSelect } from "../../ui/TreeSelect/TreeSelect";
+import { TreeSelect } from "../ui/TreeSelect";
 import React, { useContext, useState } from "react";
-import { useGroups } from "../../../hooks/useGroups";
-import { GroupContext } from "../../../contexts/GroupContext";
+import { useGroups } from "../../hooks/useGroups";
+import { GroupContext } from "../../contexts/GroupContext";
 
 const GroupSelectDialog = () => {
     const groupTree = useGroups();

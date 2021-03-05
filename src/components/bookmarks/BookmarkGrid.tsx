@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { BookmarkGroup } from "../BookmarkGroup/BookmarkGroup";
-import { GroupContext } from "../../../contexts/GroupContext";
-import SortableList from "../../ui/SortableList/SortableList";
+import { BookmarkGroup } from "./BookmarkGroup";
+import { GroupContext } from "../../contexts/GroupContext";
+import SortableList from "../ui/SortableList";
 
 export const BookmarkGrid = () => {
     const { groups, reorderGroups } = useContext(GroupContext);

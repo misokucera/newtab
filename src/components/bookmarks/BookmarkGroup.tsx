@@ -1,12 +1,12 @@
 import * as React from "react";
-import { BookmarkLink } from "../BookmarkLink/BookmarkLink";
-import { Bookmark, useGroup } from "../../../hooks/useGroup";
+import { BookmarkLink } from "./BookmarkLink";
+import { Bookmark, useGroup } from "../../hooks/useGroup";
 import { useContext, useState } from "react";
-import { GroupContext } from "../../../contexts/GroupContext";
+import { GroupContext } from "../../contexts/GroupContext";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import { AlertDialog } from "../../ui/AlertDialog/AlertDialog";
-import SortableList, { DragHandleProps, SortableItem } from "../../ui/SortableList/SortableList";
+import { AlertDialog } from "../ui/AlertDialog";
+import SortableList, { DragHandleProps, SortableItem } from "../ui/SortableList";
 
 type Props = {
     treeId: string;

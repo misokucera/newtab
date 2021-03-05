@@ -1,7 +1,7 @@
 import React from "react";
-import { getFaviconUrl } from "../../../services/favicons";
-import { Bookmark } from "../../../hooks/useGroup";
-import { DragHandleProps } from "../../ui/SortableList/SortableList";
+import { getFaviconUrl } from "../../services/favicons";
+import { Bookmark } from "../../hooks/useGroup";
+import { DragHandleProps } from "../ui/SortableList";
 
 type Props = {
     bookmark: Bookmark;
