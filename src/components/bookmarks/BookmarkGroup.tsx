@@ -7,6 +7,8 @@ import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { AlertDialog } from "../ui/AlertDialog";
 import SortableList, { DragHandleProps, SortableItem } from "../ui/SortableList";
+import Card from "../ui/Card";
+import Title from "../ui/Title";
 
 type Props = {
     treeId: string;
@@ -43,9 +45,12 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
     }));
 
     return (
-        <div className="group m-2 p-3 max-w-xs rounded bg-white">
-            <div className="flex items-center justify-between mb-2" {...dragHandleProps}>
-                <h2 className="p-3 my-0 uppercase text-sm font-normal text-gray-400 truncate">{title}</h2>
+        <Card className="group">
+            <div
+                className="flex items-center justify-between mb-2"
+                {...dragHandleProps}
+            >
+                <Title className="truncate">{title}</Title>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                     <IconButton
                         aria-label="delete"
@@ -60,7 +65,11 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                     direction="vertical"
                     sortableItems={sortableBookmarks}
                     itemContent={(bookmark, dragHandleProps) => (
-                        <BookmarkLink bookmark={bookmark} key={bookmark.id} dragHandleProps={dragHandleProps} />
+                        <BookmarkLink
+                            bookmark={bookmark}
+                            key={bookmark.id}
+                            dragHandleProps={dragHandleProps}
+                        />
                     )}
                     onDragEnd={onDragEnd}
                 />
@@ -72,6 +81,6 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                 title="Remove this group?"
                 text="Once group is removed, it could be always added again."
             />
-        </div>
+        </Card>
     );
 };
