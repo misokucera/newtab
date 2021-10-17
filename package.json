@@ -18,22 +18,19 @@
     "@types/react": "^16.14.4",
     "@types/react-beautiful-dnd": "^13.0.0",
     "@types/react-dom": "^16.9.11",
-    "autoprefixer": "^9.8.6",
     "classnames": "^2.2.6",
-    "node-sass": "^4.14.1",
-    "postcss": "^7.0.35",
+    "next": "^11.1.2",
     "prettier": "^2.2.1",
-    "react": "^16.13.1",
+    "react": "^17.0.2",
     "react-beautiful-dnd": "^13.0.0",
-    "react-dom": "^16.13.1",
-    "react-scripts": "4.0.3",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
-    "typescript": "^4.2.3"
+    "react-dom": "^17.0.2",
+    "sass": "^1.43.2",
+    "typescript": "^4.4.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "pretty:check": "prettier src/**/*.{ts,tsx,js} --check",
     "pretty": "prettier src/**/*.{ts,tsx,js} --write"
   },
@@ -54,5 +51,10 @@
   },
   "prettier": {
     "tabWidth": 4
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.7",
+    "postcss": "^8.3.9",
+    "tailwindcss": "^2.2.17"
   }
 }
