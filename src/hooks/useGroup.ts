@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMockedBookmarks } from "../api/mocks/bookmarks.mock";
 import { isDev } from "../services/environment";
 
