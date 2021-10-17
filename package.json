@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "scripts/export.sh",
     "pretty:check": "prettier src/**/*.{ts,tsx,js} --check",
     "pretty": "prettier src/**/*.{ts,tsx,js} --write"
   },

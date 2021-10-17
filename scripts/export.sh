@@ -1,5 +1,3 @@
-cd ..
-
 rm -rf .next/ out/;
 
 next build;
