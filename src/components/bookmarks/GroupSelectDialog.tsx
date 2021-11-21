@@ -1,16 +1,11 @@
-import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    Fab,
-} from "@material-ui/core";
+import { Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { TreeSelect } from "../ui/TreeSelect";
 import React, { useContext, useState } from "react";
 import { useGroups } from "../../hooks/useGroups";
 import { GroupContext } from "../../contexts/GroupContext";
+import Dialog from "../ui/Dialog";
+import Button, { ButtonType } from "../ui/Button";
 
 const GroupSelectDialog = () => {
     const groupTree = useGroups();
@@ -53,16 +48,20 @@ const GroupSelectDialog = () => {
                 </Fab>
             </div>
             <Dialog open={open} onClose={handleDialogClose}>
-                <DialogTitle>Select bookmark directory</DialogTitle>
-                <DialogContent>
-                    <TreeSelect root={groupTree} onSelect={handleSelection} />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleDialogClose}>Cancel</Button>
-                    <Button onClick={handleSubmit} color="primary">
-                        Add
-                    </Button>
-                </DialogActions>
+                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                    Select bookmark directory
+                </h3>
+                <div className="mt-2 mb-7">
+                    <p className="text-sm text-gray-500"><TreeSelect root={groupTree} onSelect={handleSelection} /></p>
+                </div>
+                <div className="sm:flex">
+                    <Button
+                        text="Add new group"
+                        type={ButtonType.Primary}
+                        onClick={handleSubmit}
+                    />
+                    <Button text="Cancel" onClick={handleDialogClose} />
+                </div>
             </Dialog>
         </>
     );

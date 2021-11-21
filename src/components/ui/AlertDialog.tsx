@@ -21,7 +21,7 @@ const AlertDialog = ({
     continueLabel = "Continue",
 }: Props) => {
     return (
-        <Dialog open={open} onCancel={onCancel}>
+        <Dialog open={open} onClose={onCancel}>
             <h3 className="text-lg leading-6 font-medium text-gray-900">
                 {title}
             </h3>
