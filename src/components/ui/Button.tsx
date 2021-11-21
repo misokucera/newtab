@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 export enum ButtonType {
     Primary,
@@ -18,12 +18,12 @@ const getClassesByType = (type: ButtonType) => {
 };
 
 type Props = {
-    text: string;
+    children: ReactNode;
     onClick: () => void;
     type?: ButtonType;
 };
 
-const Button = ({ text, onClick, type = ButtonType.Secondary }: Props) => {
+const Button = ({ children, onClick, type = ButtonType.Secondary }: Props) => {
     return (
         <button
             type="button"
@@ -32,7 +32,7 @@ const Button = ({ text, onClick, type = ButtonType.Secondary }: Props) => {
             )} mt-2 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:mr-3 sm:w-auto sm:text-sm`}
             onClick={onClick}
         >
-            {text}
+            {children}
         </button>
     );
 };

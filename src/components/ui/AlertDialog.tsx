@@ -31,12 +31,10 @@ const AlertDialog = ({
                 </div>
             )}
             <div className="sm:flex">
-                <Button
-                    text={continueLabel}
-                    type={ButtonType.Danger}
-                    onClick={onContinue}
-                />
-                <Button text={cancelLabel} onClick={onCancel} />
+                <Button type={ButtonType.Danger} onClick={onContinue}>
+                    {continueLabel}
+                </Button>
+                <Button onClick={onCancel}>{cancelLabel}</Button>
             </div>
         </Dialog>
     );

@@ -52,15 +52,18 @@ const GroupSelectDialog = () => {
                     Select bookmark directory
                 </h3>
                 <div className="mt-2 mb-7">
-                    <p className="text-sm text-gray-500"><TreeSelect root={groupTree} onSelect={handleSelection} /></p>
+                    <p className="text-sm text-gray-500">
+                        <TreeSelect
+                            root={groupTree}
+                            onSelect={handleSelection}
+                        />
+                    </p>
                 </div>
                 <div className="sm:flex">
-                    <Button
-                        text="Add new group"
-                        type={ButtonType.Primary}
-                        onClick={handleSubmit}
-                    />
-                    <Button text="Cancel" onClick={handleDialogClose} />
+                    <Button type={ButtonType.Primary} onClick={handleSubmit}>
+                        Add new group
+                    </Button>
+                    <Button onClick={handleDialogClose}>Cancel</Button>
                 </div>
             </Dialog>
         </>
