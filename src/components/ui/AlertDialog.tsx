@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Button, { ButtonType } from "./Button";
 import FadeTransitionChild from "./transitions/FadeTransitionChild";
-import FadeAndPopTransitionChild from "./transitions/FadeAndTranslateTransitionChild";
+import FadeAndPopTransitionChild from "./transitions/FadeAndPopTransitionChild";
 
 type Props = {
     open: boolean;
