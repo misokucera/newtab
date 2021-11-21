@@ -11,10 +11,10 @@ const getClassesByType = (type: ButtonType) => {
         case ButtonType.Primary:
             return "text-blue-900 bg-blue-100 hover:bg-blue-200 focus:ring-blue-500";
         case ButtonType.Danger:
-            return "text-white bg-red-600 hover:bg-red-700 focus:ring-red-500";
+            return "text-white bg-red-600 hover:bg-red-700 focus:ring-red-200";
     }
 
-    return "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-indigo-500 border";
+    return "border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-indigo-200 border";
 };
 
 type Props = {
