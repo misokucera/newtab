@@ -5,10 +5,10 @@ import { useContext, useState } from "react";
 import { GroupContext } from "../../contexts/GroupContext";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import { AlertDialog } from "../ui/AlertDialog";
 import SortableList, { DragHandleProps, SortableItem } from "../ui/SortableList";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
+import AlertDialog from "../ui/AlertDialog";
 
 type Props = {
     treeId: string;
@@ -80,6 +80,7 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                 onCancel={handleCloseRemoveDialog}
                 title="Remove this group?"
                 text="Once group is removed, it could be always added again."
+                continueLabel="Remove"
             />
         </Card>
     );

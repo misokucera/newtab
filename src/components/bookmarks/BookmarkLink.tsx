@@ -5,7 +5,7 @@ import { DragHandleProps } from "../ui/SortableList";
 import Close from "@material-ui/icons/Close";
 import styles from "./BookmarkLink.module.scss";
 import IconButton from "../ui/IconButton";
-import { AlertDialog } from "../ui/AlertDialog";
+import AlertDialog from "../ui/AlertDialog";
 
 type Props = {
     bookmark: Bookmark;
@@ -70,6 +70,7 @@ export const BookmarkLink = ({
                 onCancel={handleCloseRemoveDialog}
                 title="Remove this bookmark?"
                 text="Bookmark will be permanently removed from browser."
+                continueLabel="Remove"
             />
         </div>
     );
