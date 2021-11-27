@@ -1,6 +1,6 @@
 import AddIcon from "@material-ui/icons/Add";
 import { TreeSelect } from "../ui/TreeSelect";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useGroups } from "../../hooks/useGroups";
 import { GroupContext } from "../../contexts/GroupContext";
 import Button, { ButtonType } from "../ui/Button";
@@ -9,27 +9,32 @@ import Title from "../ui/Title";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "../ui/IconButton";
 import TransparentIconButton from "../ui/TransparentIconButton";
+import { Transition } from "@headlessui/react";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();
     const { addGroup } = useContext(GroupContext);
 
-    const [open, setOpen] = useState(false);
+    const [showSelector, setShowSelector] = useState(false);
+    const [showButton, setShowButton] = useState(true);
     const [selectedGroup, setSelectedGroup] = useState("");
 
-    const handleOpen = () => {
-        setOpen(true);
+    const handleHideButton = () => {
+        setShowButton(false);
     };
 
-    const handleClose = () => {
-        setOpen(false);
-        setSelectedGroup("");
+    const handleHideSelector = () => {
+        setShowSelector(false);
     };
 
-    const handleSubmit = () => {
-        addGroup(selectedGroup);
-        handleClose();
-    };
+    const handleAfterSelectorLeave = () => {
+        if (selectedGroup) {
+            addGroup(selectedGroup);
+            setSelectedGroup("");
+        }
+
+        setShowButton(true);
+    }
 
     const handleSelection = (groupId: string) => {
         setSelectedGroup(groupId);
@@ -41,7 +46,16 @@ const GroupSelectCard = () => {
 
     return (
         <>
-            {open ? (
+            <Transition
+                show={showSelector}
+                enter="transition-all transform-gpu origin-top duration-150"
+                enterFrom="opacity-0 scale-90"
+                enterTo="opacity-100 scale-100"
+                leave="transition-all transform-gpu origin-top duration-150"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-90"
+                afterLeave={handleAfterSelectorLeave}
+            >
                 <Card>
                     <div className="flex items-center justify-between mb-2">
                         <Title className="truncate">
@@ -50,13 +64,13 @@ const GroupSelectCard = () => {
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                             <IconButton
                                 aria-label="delete"
-                                onClick={handleClose}
+                                onClick={handleHideSelector}
                             >
                                 <CloseIcon fontSize="small" />
                             </IconButton>
                         </div>
                     </div>
-                    <div className="mt-2 mb-7 text-left">
+                    <div className="p-1.5 mt-2 mb-7 text-left">
                         <p className="text-sm text-gray-500">
                             <TreeSelect
                                 root={groupTree}
@@ -67,18 +81,31 @@ const GroupSelectCard = () => {
                     <div className="sm:flex">
                         <Button
                             type={ButtonType.Primary}
-                            onClick={handleSubmit}
+                            onClick={handleHideSelector}
                         >
                             Add new group
                         </Button>
-                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={handleHideSelector}>Cancel</Button>
                     </div>
                 </Card>
-            ) : (
-                <TransparentIconButton className="ml-2" onClick={handleOpen}>
+            </Transition>
+            <Transition
+                show={showButton}
+                enter="transition-opacity duration-75"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity duration-75"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+                afterLeave={() => setShowSelector(true)}
+            >
+                <TransparentIconButton
+                    className="ml-2"
+                    onClick={handleHideButton}
+                >
                     <AddIcon />
                 </TransparentIconButton>
-            )}
+            </Transition>
         </>
     );
 };

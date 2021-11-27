@@ -65,9 +65,12 @@ const SortableList = ({
             <Droppable droppableId="droppable" direction={direction}>
                 {(provided, snapshot) => (
                     <div
-                        className={cn({
-                            "inline-flex": direction === "horizontal",
-                        }, "items-start")}
+                        className={cn(
+                            {
+                                "inline-flex": direction === "horizontal",
+                            },
+                            "items-start"
+                        )}
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
