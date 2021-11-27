@@ -6,15 +6,15 @@ type Props = {
     className?: string;
 };
 
-const IconButton = ({ onClick, children, className }: Props) => {
+const SmallIconButton = ({ onClick, children, className }: Props) => {
     return (
         <button
             onClick={onClick}
-            className={`flex rounded-lg p-4 hover:bg-white border-0 bg-white ${className}`}
+            className={`flex rounded-sm hover:bg-white border-0 bg-transparent ${className}`}
         >
             {children}
         </button>
     );
 };
 
-export default IconButton;
+export default SmallIconButton;

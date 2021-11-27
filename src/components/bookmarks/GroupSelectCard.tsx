@@ -1,4 +1,3 @@
-import { Fab, IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { TreeSelect } from "../ui/TreeSelect";
 import React, { useContext, useState } from "react";
@@ -8,13 +7,15 @@ import Button, { ButtonType } from "../ui/Button";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
 import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "../ui/IconButton";
+import TransparentIconButton from "../ui/TransparentIconButton";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();
     const { addGroup } = useContext(GroupContext);
 
     const [open, setOpen] = useState(false);
-    const [selectedGroup, setSelectedGroup] = useState('');
+    const [selectedGroup, setSelectedGroup] = useState("");
 
     const handleOpen = () => {
         setOpen(true);
@@ -22,7 +23,7 @@ const GroupSelectCard = () => {
 
     const handleClose = () => {
         setOpen(false);
-        setSelectedGroup('');
+        setSelectedGroup("");
     };
 
     const handleSubmit = () => {
@@ -74,9 +75,9 @@ const GroupSelectCard = () => {
                     </div>
                 </Card>
             ) : (
-                <IconButton aria-label="delete" onClick={handleOpen}>
+                <TransparentIconButton className="ml-2" onClick={handleOpen}>
                     <AddIcon />
-                </IconButton>
+                </TransparentIconButton>
             )}
         </>
     );

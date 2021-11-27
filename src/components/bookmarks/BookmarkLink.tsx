@@ -4,7 +4,7 @@ import { Bookmark } from "../../hooks/useGroup";
 import { DragHandleProps } from "../ui/SortableList";
 import Close from "@material-ui/icons/Close";
 import styles from "./BookmarkLink.module.scss";
-import IconButton from "../ui/IconButton";
+import SmallIconButton from "../ui/SmallIconButton";
 import AlertDialog from "../ui/AlertDialog";
 
 type Props = {
@@ -56,12 +56,12 @@ export const BookmarkLink = ({
                     </p>
                 </a>
                 <div className={`hidden ${styles.close}`}>
-                    <IconButton className="ml-1">
+                    <SmallIconButton className="ml-1">
                         <Close
                             onClick={handleOpenRemoveDialog}
                             fontSize="small"
                         />
-                    </IconButton>
+                    </SmallIconButton>
                 </div>
             </div>
             <AlertDialog
