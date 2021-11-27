@@ -18,6 +18,8 @@ export type DragHandleProps = DraggableProvidedDragHandleProps;
 type Props = {
     direction: "vertical" | "horizontal";
     sortableItems: SortableItem[];
+    contentBefore?: React.ReactNode;
+    contentAfter?: React.ReactNode;
     itemContent: (item: any, dragHandle?: DragHandleProps) => React.ReactNode;
     onDragEnd?: (items: any[]) => void;
 };
@@ -37,6 +39,8 @@ const reorder = (
 const SortableList = ({
     direction,
     sortableItems,
+    contentBefore,
+    contentAfter,
     itemContent,
     onDragEnd,
 }: Props) => {
@@ -63,10 +67,11 @@ const SortableList = ({
                     <div
                         className={cn({
                             "inline-flex": direction === "horizontal",
-                        })}
+                        }, "items-start")}
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
+                        {contentBefore}
                         {sortableItems.map((sortableItem, index) => (
                             <Draggable
                                 key={sortableItem.id}
@@ -87,6 +92,7 @@ const SortableList = ({
                             </Draggable>
                         ))}
                         {provided.placeholder}
+                        {contentAfter}
                     </div>
                 )}
             </Droppable>

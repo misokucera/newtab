@@ -1,14 +1,13 @@
 import * as React from "react";
 import { BookmarkLink } from "./BookmarkLink";
 import { Bookmark, useGroup } from "../../hooks/useGroup";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GroupContext } from "../../contexts/GroupContext";
 import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import SortableList, { DragHandleProps, SortableItem } from "../ui/SortableList";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
-import AlertDialog from "../ui/AlertDialog";
 
 type Props = {
     treeId: string;
@@ -18,15 +17,6 @@ type Props = {
 export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
     const { bookmarks, title, reorderBookmarks } = useGroup(treeId);
     const { removeGroup } = useContext(GroupContext);
-    const [openRemoveDialog, setOpenRemoveDialog] = useState(false);
-
-    const handleOpenRemoveDialog = () => {
-        setOpenRemoveDialog(true);
-    };
-
-    const handleCloseRemoveDialog = () => {
-        setOpenRemoveDialog(false);
-    };
 
     const handleRemove = () => {
         removeGroup(treeId);
@@ -54,7 +44,7 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                     <IconButton
                         aria-label="delete"
-                        onClick={handleOpenRemoveDialog}
+                        onClick={handleRemove}
                     >
                         <CloseIcon fontSize="small" />
                     </IconButton>
@@ -74,14 +64,6 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                     onDragEnd={onDragEnd}
                 />
             </div>
-            <AlertDialog
-                open={openRemoveDialog}
-                onContinue={handleRemove}
-                onCancel={handleCloseRemoveDialog}
-                title="Remove this group?"
-                text="Once group is removed, it could be always added again."
-                continueLabel="Remove"
-            />
         </Card>
     );
 };

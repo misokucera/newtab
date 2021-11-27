@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { BookmarkGroup } from "./BookmarkGroup";
 import { GroupContext } from "../../contexts/GroupContext";
 import SortableList from "../ui/SortableList";
+import GroupSelectCard from "./GroupSelectCard";
 
 export const BookmarkGrid = () => {
     const { groups, reorderGroups } = useContext(GroupContext);
@@ -27,6 +28,7 @@ export const BookmarkGrid = () => {
                         dragHandleProps={dragHandleProps}
                     />
                 )}
+                contentAfter={<GroupSelectCard/>}
                 onDragEnd={handleDragEnd}
             />
         </div>
