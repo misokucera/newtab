@@ -10,7 +10,7 @@ const IconButton = ({ onClick, children, className }: Props) => {
     return (
         <button
             onClick={onClick}
-            className={`flex rounded-lg p-4 hover:bg-white border-0 bg-white ${className}`}
+            className={`flex text-gray-500 rounded-lg p-4 transition duration-150 border-0 bg-white hover:bg-gray-100 ${className}`}
         >
             {children}
         </button>

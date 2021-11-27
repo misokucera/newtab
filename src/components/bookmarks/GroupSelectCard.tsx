@@ -36,6 +36,11 @@ const GroupSelectCard = () => {
         setShowButton(true);
     }
 
+    const handleClose = () => {
+        setSelectedGroup("");
+        handleHideSelector();
+    }
+
     const handleSelection = (groupId: string) => {
         setSelectedGroup(groupId);
     };
@@ -61,11 +66,8 @@ const GroupSelectCard = () => {
                         <Title className="truncate">
                             Select bookmark directory
                         </Title>
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                            <IconButton
-                                aria-label="delete"
-                                onClick={handleHideSelector}
-                            >
+                        <div>
+                            <IconButton onClick={handleClose}>
                                 <CloseIcon fontSize="small" />
                             </IconButton>
                         </div>
@@ -81,11 +83,11 @@ const GroupSelectCard = () => {
                     <div className="sm:flex">
                         <Button
                             type={ButtonType.Primary}
+                            className="w-full block"
                             onClick={handleHideSelector}
                         >
                             Add new group
                         </Button>
-                        <Button onClick={handleHideSelector}>Cancel</Button>
                     </div>
                 </Card>
             </Transition>

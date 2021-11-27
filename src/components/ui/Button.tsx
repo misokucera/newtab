@@ -21,15 +21,21 @@ type Props = {
     children: ReactNode;
     onClick: () => void;
     type?: ButtonType;
+    className?: string;
 };
 
-const Button = ({ children, onClick, type = ButtonType.Secondary }: Props) => {
+const Button = ({
+    children,
+    onClick,
+    type = ButtonType.Secondary,
+    className,
+}: Props) => {
     return (
         <button
             type="button"
             className={`${getClassesByType(
                 type
-            )} mt-2 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:mr-3 sm:w-auto sm:text-sm`}
+            )} ${className} mt-2 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:mr-3 sm:w-auto sm:text-sm`}
             onClick={onClick}
         >
             {children}

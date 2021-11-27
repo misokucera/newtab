@@ -11,7 +11,7 @@ const TransparentIconButton = ({ onClick, children, className }: Props) => {
     return (
         <IconButton
             onClick={onClick}
-            className={`${className} opacity-50 hover:opacity-100 transition-opacity`}
+            className={`${className} opacity-50 hover:opacity-100`}
         >
             {children}
         </IconButton>
