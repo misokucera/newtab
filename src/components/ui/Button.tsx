@@ -22,6 +22,7 @@ type Props = {
     onClick: () => void;
     type?: ButtonType;
     className?: string;
+    fluid?: boolean;
 };
 
 const Button = ({
@@ -29,15 +30,17 @@ const Button = ({
     onClick,
     type = ButtonType.Secondary,
     className,
+    fluid = false,
 }: Props) => {
+    let classes = `${getClassesByType(type)} ${className} `;
+
+    classes +=
+        " mt-2 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:text-sm";
+
+    classes += fluid ? "sm:w-auto" : "sm:mr-3";
+
     return (
-        <button
-            type="button"
-            className={`${getClassesByType(
-                type
-            )} ${className} mt-2 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:mr-3 sm:w-auto sm:text-sm`}
-            onClick={onClick}
-        >
+        <button type="button" className={classes} onClick={onClick}>
             {children}
         </button>
     );

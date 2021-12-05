@@ -1,9 +1,8 @@
 import * as React from "react";
 import { BookmarkLink } from "./BookmarkLink";
 import { Bookmark, useGroup } from "../../hooks/useGroup";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { GroupContext } from "../../contexts/GroupContext";
-import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import SortableList, {
     DragHandleProps,
@@ -11,7 +10,8 @@ import SortableList, {
 } from "../ui/SortableList";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
-import { Transition } from "@headlessui/react";
+import IconButton from "../ui/IconButton";
+import FadeAndScaleTransition from "../ui/transitions/FadeAndScaleTransition";
 
 type Props = {
     treeId: string;
@@ -21,13 +21,7 @@ type Props = {
 export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
     const { bookmarks, title, reorderBookmarks } = useGroup(treeId);
     const { removeGroup } = useContext(GroupContext);
-    const [show, setShow] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setShow(true);
-        }, 150);
-    }, []);
+    const [show, setShow] = useState(true);
 
     const handleRemove = () => {
         setShow(false);
@@ -48,15 +42,8 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
     }));
 
     return (
-        <Transition
-            appear={true}
+        <FadeAndScaleTransition
             show={show}
-            enter="transition-all transform-gpu origin-top duration-150"
-            enterFrom="opacity-0 scale-90"
-            enterTo="opacity-100 scale-100"
-            leave="transition-all transform-gpu origin-top duration-150"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-90"
             afterLeave={() => removeGroup(treeId)}
         >
             <Card className="group">
@@ -66,7 +53,7 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                 >
                     <Title className="truncate">{title}</Title>
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                        <IconButton aria-label="delete" onClick={handleRemove}>
+                        <IconButton onClick={handleRemove}>
                             <CloseIcon fontSize="small" />
                         </IconButton>
                     </div>
@@ -86,6 +73,6 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                     />
                 </div>
             </Card>
-        </Transition>
+        </FadeAndScaleTransition>
     );
 };

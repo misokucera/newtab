@@ -4,7 +4,7 @@ import { Bookmark } from "../../hooks/useGroup";
 import { DragHandleProps } from "../ui/SortableList";
 import Close from "@material-ui/icons/Close";
 import styles from "./BookmarkLink.module.scss";
-import SmallIconButton from "../ui/SmallIconButton";
+import DeleteBookmarkButton from "./DeleteBookmarkButton";
 import AlertDialog from "../ui/AlertDialog";
 
 type Props = {
@@ -35,18 +35,18 @@ export const BookmarkLink = ({
 
     return (
         <div
-            className={`p-1.5 mb-1 rounded text-gray-500 hover:bg-gray-100 ${styles.link}`}
+            className={`rounded text-gray-500 hover:bg-gray-100 ${styles.link}`}
         >
             <div className="flex items-center">
                 <a
                     href={url}
-                    className="flex flex-1 items-center overflow-x-hidden no-underline"
+                    className="flex flex-1 p-1.5 items-center overflow-x-hidden no-underline"
                     {...dragHandleProps}
                 >
                     <img
                         src={getFaviconUrl(url)}
                         alt=""
-                        className="inline-block mr-4 w-5 h-5 p-0.5 rounded-sm bg-white"
+                        className="inline-block mr-3 w-5 h-5 p-0.5 rounded-sm bg-white"
                     />
                     <p
                         className="text-left m-0 text-sm truncate"
@@ -56,12 +56,12 @@ export const BookmarkLink = ({
                     </p>
                 </a>
                 <div className={`hidden ${styles.close}`}>
-                    <SmallIconButton className="ml-1">
+                    <DeleteBookmarkButton>
                         <Close
                             onClick={handleOpenRemoveDialog}
                             fontSize="small"
                         />
-                    </SmallIconButton>
+                    </DeleteBookmarkButton>
                 </div>
             </div>
             <AlertDialog
