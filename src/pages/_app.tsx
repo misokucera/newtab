@@ -22,6 +22,7 @@ export default function MyApp({ Component, pageProps }: Props) {
                 <meta name="keywords" content="Keywords" />
                 <title>New tab</title>
 
+                <link rel="icon" href="/favicon.png" type="image/png" />
                 <link rel="manifest" href="/manifest.json" />
                 <link
                     rel="stylesheet"
