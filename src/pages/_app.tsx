@@ -8,7 +8,7 @@ type Props = {
     pageProps: any;
 };
 
-export default function MyApp({ Component, pageProps }: Props) {
+export default function App({ Component, pageProps }: Props) {
     return (
         <>
             <Head>
@@ -20,14 +20,8 @@ export default function MyApp({ Component, pageProps }: Props) {
                 />
                 <meta name="description" content="Description" />
                 <meta name="keywords" content="Keywords" />
-                <title>New tab</title>
 
-                <link rel="icon" href="/favicon.png" type="image/png" />
-                <link rel="manifest" href="/manifest.json" />
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-                />
+                <title>New tab</title>
             </Head>
             <Component {...pageProps} />
         </>
