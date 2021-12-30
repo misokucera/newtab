@@ -50,6 +50,7 @@ const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
                 <Transition show={isShowing}>
                     {childrenNodes.map((node) => (
                         <TreeSelectItem
+                            key={node.id}
                             treeNode={node}
                             selectedIds={selectedIds}
                             onSelect={onSelect}

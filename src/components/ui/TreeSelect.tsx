@@ -29,6 +29,7 @@ export const TreeSelect = ({ root, onSelect }: Props) => {
                 root.children.length > 0 &&
                 root.children.map((node) => (
                     <TreeSelectItem
+                        key={node.id}
                         treeNode={node}
                         onSelect={handleSelect}
                         selectedIds={selectedIds}
