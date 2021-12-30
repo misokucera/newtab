@@ -1,43 +1,39 @@
-import React from "react";
-import { TreeItem, TreeView } from "@material-ui/lab";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import React, { useState } from "react";
+import TreeSelectItem from "./TreeSelectItem";
 
-type Node = {
+export type TreeNode = {
     id: string;
     label: string;
-    children?: Node[];
+    children?: TreeNode[];
 };
 
 type Props = {
-    root: Node;
-    onSelect?: (id: string) => void;
+    root: TreeNode;
+    onSelect?: (node: TreeNode) => void;
 };
 
 export const TreeSelect = ({ root, onSelect }: Props) => {
-    const handleSelect = (event: React.ChangeEvent<{}>, nodeId: string) => {
+    const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+    const handleSelect = (node: TreeNode) => {
+        setSelectedIds([node.id]);
+
         if (onSelect) {
-            onSelect(nodeId);
+            onSelect(node);
         }
     };
 
-    const renderNode = (node: Node) => {
-        return (
-            <TreeItem nodeId={node.id} label={node.label} key={node.id}>
-                {node.children &&
-                    node.children.map((childNode) => renderNode(childNode))}
-            </TreeItem>
-        );
-    };
-
     return (
-        <TreeView
-            defaultCollapseIcon={<ExpandMoreIcon />}
-            defaultExpandIcon={<ChevronRightIcon />}
-            onNodeSelect={handleSelect}
-        >
+        <>
             {root.children &&
-                root.children.map((childNode) => renderNode(childNode))}
-        </TreeView>
+                root.children.length > 0 &&
+                root.children.map((node) => (
+                    <TreeSelectItem
+                        treeNode={node}
+                        onSelect={handleSelect}
+                        selectedIds={selectedIds}
+                    />
+                ))}
+        </>
     );
 };

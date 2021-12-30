@@ -1,5 +1,4 @@
 import AddIcon from "@material-ui/icons/Add";
-import { TreeSelect } from "../ui/TreeSelect";
 import React, { useContext, useState } from "react";
 import { useGroups } from "../../hooks/useGroups";
 import { GroupContext } from "../../contexts/GroupContext";
@@ -9,6 +8,7 @@ import Title from "../ui/Title";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "../ui/IconButton";
 import FadeAndScaleTransition from "../ui/transitions/FadeAndScaleTransition";
+import { TreeSelect, TreeNode } from "../ui/TreeSelect";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();
@@ -16,7 +16,9 @@ const GroupSelectCard = () => {
 
     const [showSelector, setShowSelector] = useState(false);
     const [showButton, setShowButton] = useState(true);
-    const [selectedGroup, setSelectedGroup] = useState("");
+    const [selectedGroupNode, setSelectedGroupNode] = useState<TreeNode | null>(
+        null
+    );
 
     const handleHideButton = () => {
         setShowButton(false);
@@ -27,21 +29,21 @@ const GroupSelectCard = () => {
     };
 
     const handleAfterSelectorLeave = () => {
-        if (selectedGroup) {
-            addGroup(selectedGroup);
-            setSelectedGroup("");
+        if (selectedGroupNode) {
+            addGroup(selectedGroupNode.id);
+            setSelectedGroupNode(null);
         }
 
         setShowButton(true);
     };
 
     const handleClose = () => {
-        setSelectedGroup("");
+        setSelectedGroupNode(null);
         handleHideSelector();
     };
 
-    const handleSelection = (groupId: string) => {
-        setSelectedGroup(groupId);
+    const handleSelection = (node: TreeNode) => {
+        setSelectedGroupNode(node);
     };
 
     if (!groupTree) {
@@ -57,7 +59,9 @@ const GroupSelectCard = () => {
                 <Card>
                     <div className="flex items-center justify-between mb-2">
                         <Title className="truncate">
-                            Select bookmark directory
+                            {selectedGroupNode
+                                ? selectedGroupNode.label
+                                : "Select bookmark directory"}
                         </Title>
                         <div>
                             <IconButton onClick={handleClose}>
