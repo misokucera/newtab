@@ -3,7 +3,6 @@ import { getFaviconUrl } from "../../services/favicons";
 import { Bookmark } from "../../hooks/useGroup";
 import { DragHandleProps } from "../ui/SortableList";
 import { MdClose } from "react-icons/md";
-import styles from "./BookmarkLink.module.scss";
 import DeleteBookmarkButton from "./DeleteBookmarkButton";
 import AlertDialog from "../ui/AlertDialog";
 
@@ -34,9 +33,7 @@ export const BookmarkLink = ({
     };
 
     return (
-        <div
-            className={`rounded text-gray-500 hover:bg-gray-100 ${styles.link}`}
-        >
+        <div className="group/link rounded text-gray-500 hover:bg-gray-100">
             <div className="flex items-center">
                 <a
                     href={url}
@@ -55,7 +52,7 @@ export const BookmarkLink = ({
                         {title || url}
                     </p>
                 </a>
-                <div className={`hidden ${styles.close}`}>
+                <div className="group-hover/link:block hidden">
                     <DeleteBookmarkButton>
                         <MdClose onClick={handleOpenRemoveDialog} size={20} />
                     </DeleteBookmarkButton>

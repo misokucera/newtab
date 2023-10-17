@@ -20,9 +20,7 @@ const mapTreeToBookmark = ({ id, title, url, index }: any) => ({
     index,
 });
 
-export function useGroup(
-    groupId: string
-): {
+export function useGroup(groupId: string): {
     bookmarks: Bookmark[];
     title: string;
     reorderBookmarks: (bookmarks: Bookmark[]) => void;
