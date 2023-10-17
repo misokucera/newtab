@@ -38,7 +38,7 @@ const Button = ({
         " mt-2 w-full inline-flex justify-center rounded-md px-4 py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 sm:mt-0 sm:text-sm";
 
     if (!fluid) {
-        classes += " sm:w-auto sm:mr-3"
+        classes += " sm:w-auto sm:mr-3";
     }
 
     return (

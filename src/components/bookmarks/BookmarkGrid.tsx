@@ -28,7 +28,7 @@ export const BookmarkGrid = () => {
                         dragHandleProps={dragHandleProps}
                     />
                 )}
-                contentAfter={<GroupSelectCard/>}
+                contentAfter={<GroupSelectCard />}
                 onDragEnd={handleDragEnd}
             />
         </div>

@@ -1,11 +1,10 @@
-import AddIcon from "@material-ui/icons/Add";
 import React, { useContext, useState } from "react";
 import { useGroups } from "../../hooks/useGroups";
 import { GroupContext } from "../../contexts/GroupContext";
 import Button, { ButtonType } from "../ui/Button";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
-import CloseIcon from "@material-ui/icons/Close";
+import { MdClose, MdAdd } from "react-icons/md";
 import IconButton from "../ui/IconButton";
 import FadeAndScaleTransition from "../ui/transitions/FadeAndScaleTransition";
 import { TreeSelect, TreeNode } from "../ui/TreeSelect";
@@ -65,7 +64,7 @@ const GroupSelectCard = () => {
                         </Title>
                         <div>
                             <IconButton onClick={handleClose}>
-                                <CloseIcon fontSize="small" />
+                                <MdClose size={20} />
                             </IconButton>
                         </div>
                     </div>
@@ -98,7 +97,7 @@ const GroupSelectCard = () => {
                     className="ml-2 shadow-sm"
                     transparent
                 >
-                    <AddIcon />
+                    <MdAdd size={20} />
                 </IconButton>
             </FadeAndScaleTransition>
         </>

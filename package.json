@@ -13,10 +13,7 @@
     "pretty": "prettier src/**/*.{ts,tsx,js} --write"
   },
   "dependencies": {
-    "@headlessui/react": "^1.4.2",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@headlessui/react": "^1.7.17",
     "@types/chrome": "0.0.125",
     "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.31",
@@ -24,11 +21,12 @@
     "@types/react-beautiful-dnd": "^13.0.0",
     "@types/react-dom": "^16.9.11",
     "classnames": "^2.2.6",
-    "next": "^12.3.3",
+    "next": "^13.5.5",
     "prettier": "^2.2.1",
-    "react": "^17.0.2",
+    "react": "^18.2.0",
     "react-beautiful-dnd": "^13.0.0",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
     "sass": "^1.43.2",
     "typescript": "^4.4.4"
   },
@@ -36,7 +34,7 @@
     "@next/bundle-analyzer": "^11.1.2",
     "autoprefixer": "^10.3.7",
     "eslint": "^8.5.0",
-    "eslint-config-next": "12.0.7",
+    "eslint-config-next": "^13.5.5",
     "postcss": "^8.4.31",
     "tailwindcss": "^2.2.17"
   },

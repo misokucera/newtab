@@ -3,7 +3,7 @@ import { BookmarkLink } from "./BookmarkLink";
 import { Bookmark, useGroup } from "../../hooks/useGroup";
 import { useContext, useState } from "react";
 import { GroupContext } from "../../contexts/GroupContext";
-import CloseIcon from "@material-ui/icons/Close";
+import { MdClose } from "react-icons/md";
 import SortableList, {
     DragHandleProps,
     SortableItem,
@@ -54,7 +54,7 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
                     <Title className="truncate">{title}</Title>
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                         <IconButton onClick={handleRemove}>
-                            <CloseIcon fontSize="small" />
+                            <MdClose size={20} />
                         </IconButton>
                     </div>
                 </div>
