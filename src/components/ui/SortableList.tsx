@@ -27,7 +27,7 @@ type Props = {
 const reorder = (
     sortableItems: SortableItem[],
     startIndex: number,
-    endIndex: number
+    endIndex: number,
 ): SortableItem[] => {
     const result = Array.from(sortableItems);
     const [removed] = result.splice(startIndex, 1);
@@ -52,7 +52,7 @@ const SortableList = ({
         const sortedItems = reorder(
             sortableItems,
             result.source.index,
-            result.destination.index
+            result.destination.index,
         );
 
         if (onDragEnd) {
@@ -69,7 +69,7 @@ const SortableList = ({
                             {
                                 "inline-flex": direction === "horizontal",
                             },
-                            "items-start"
+                            "items-start",
                         )}
                         ref={provided.innerRef}
                         {...provided.droppableProps}
@@ -88,7 +88,7 @@ const SortableList = ({
                                     >
                                         {itemContent(
                                             sortableItem.item,
-                                            provided.dragHandleProps
+                                            provided.dragHandleProps,
                                         )}
                                     </div>
                                 )}

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import "../index.scss";
+import "../index.css";
 import "tailwindcss/tailwind.css";
 
 // TODO: add correct types

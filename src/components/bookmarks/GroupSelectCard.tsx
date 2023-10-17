@@ -16,7 +16,7 @@ const GroupSelectCard = () => {
     const [showSelector, setShowSelector] = useState(false);
     const [showButton, setShowButton] = useState(true);
     const [selectedGroupNode, setSelectedGroupNode] = useState<TreeNode | null>(
-        null
+        null,
     );
 
     const handleHideButton = () => {

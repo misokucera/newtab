@@ -32,7 +32,7 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
             sortedItems.map((item, index) => ({
                 ...item,
                 index,
-            }))
+            })),
         );
     };
 
