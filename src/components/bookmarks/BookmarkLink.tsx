@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getFaviconUrl } from "../../services/favicons";
 import { Bookmark } from "../../hooks/useGroup";
 import { DragHandleProps } from "../ui/SortableList";
-import Close from "@material-ui/icons/Close";
+import { MdClose } from "react-icons/md";
 import styles from "./BookmarkLink.module.scss";
 import DeleteBookmarkButton from "./DeleteBookmarkButton";
 import AlertDialog from "../ui/AlertDialog";
@@ -57,10 +57,7 @@ export const BookmarkLink = ({
                 </a>
                 <div className={`hidden ${styles.close}`}>
                     <DeleteBookmarkButton>
-                        <Close
-                            onClick={handleOpenRemoveDialog}
-                            fontSize="small"
-                        />
+                        <MdClose onClick={handleOpenRemoveDialog} size={20} />
                     </DeleteBookmarkButton>
                 </div>
             </div>
