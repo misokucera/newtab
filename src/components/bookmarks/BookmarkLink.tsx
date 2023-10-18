@@ -8,7 +8,7 @@ import AlertDialog from "../ui/AlertDialog";
 
 type Props = {
     bookmark: Bookmark;
-    dragHandleProps?: DragHandleProps;
+    dragHandleProps?: DragHandleProps | null;
 };
 
 export const BookmarkLink = ({

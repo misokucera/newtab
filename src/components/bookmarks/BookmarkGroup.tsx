@@ -15,7 +15,7 @@ import FadeAndScaleTransition from "../ui/transitions/FadeAndScaleTransition";
 
 type Props = {
     treeId: string;
-    dragHandleProps?: DragHandleProps;
+    dragHandleProps?: DragHandleProps | null;
 };
 
 export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
