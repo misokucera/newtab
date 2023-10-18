@@ -20,7 +20,10 @@ type Props = {
     sortableItems: SortableItem[];
     contentBefore?: React.ReactNode;
     contentAfter?: React.ReactNode;
-    itemContent: (item: any, dragHandle?: DragHandleProps) => React.ReactNode;
+    itemContent: (
+        item: any,
+        dragHandle?: DragHandleProps | null,
+    ) => React.ReactNode;
     onDragEnd?: (items: any[]) => void;
 };
 
