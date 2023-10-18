@@ -1,3 +1,5 @@
+"use client";
+
 import { BookmarkGrid } from "../components/bookmarks/BookmarkGrid";
 import { GroupProvider } from "../contexts/GroupContext";
 import React from "react";
