@@ -1,15 +1,9 @@
 import { VariantProps, cva } from "class-variance-authority";
-import classnames from "classnames";
 import React, { ComponentProps } from "react";
-
-export enum ButtonType {
-    Primary,
-    Secondary,
-    Danger,
-}
+import { twMerge } from "tailwind-merge";
 
 const variants = cva(
-    "mt-2 inline-flex w-full justify-center rounded-md px-4 py-2 text-base font-medium sm:mt-0 sm:w-auto sm:text-sm",
+    "inline-flex justify-center rounded-md px-4 py-2 text-base font-medium sm:text-sm",
     {
         variants: {
             variant: {
@@ -27,15 +21,15 @@ type Props = ComponentProps<"button"> & VariantProps<typeof variants>;
 
 const Button = ({
     children,
-    onClick,
     variant = "secondary",
     className,
+    ...props
 }: Props) => {
     return (
         <button
             type="button"
-            className={classnames(className, variants({ variant }))}
-            onClick={onClick}
+            className={twMerge(variants({ variant }), className)}
+            {...props}
         >
             {children}
         </button>

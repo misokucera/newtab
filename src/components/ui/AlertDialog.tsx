@@ -32,11 +32,17 @@ const AlertDialog = ({
                     </p>
                 </div>
             )}
-            <div className="gap-5 sm:flex sm:gap-3">
-                <Button variant="danger" onClick={onContinue}>
+            <div className="flex flex-wrap gap-2">
+                <Button
+                    variant="danger"
+                    className="w-full sm:w-auto"
+                    onClick={onContinue}
+                >
                     {continueLabel}
                 </Button>
-                <Button onClick={onCancel}>{cancelLabel}</Button>
+                <Button className="w-full sm:w-auto" onClick={onCancel}>
+                    {cancelLabel}
+                </Button>
             </div>
         </Dialog>
     );

@@ -79,7 +79,7 @@ const GroupSelectCard = () => {
                     <div className="sm:flex">
                         <Button
                             variant="primary"
-                            className="block w-full"
+                            className="sm:w-full"
                             onClick={handleHideSelector}
                         >
                             Add new group

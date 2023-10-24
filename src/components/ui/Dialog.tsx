@@ -31,7 +31,7 @@ const Dialog = ({ open, onClose, children }: Props) => {
                     </span>
                     <FadeAndPopTransitionChild>
                         <div className="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:max-w-lg sm:align-middle">
-                            <div className="bg-white px-3 pb-3 pt-4 dark:bg-slate-700 sm:p-10">
+                            <div className="bg-white p-6 dark:bg-slate-700 sm:p-10">
                                 <div className="sm:flex sm:items-start">
                                     <div className="mt-3 text-center sm:mt-0 sm:text-left">
                                         {children}
