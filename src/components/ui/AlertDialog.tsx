@@ -1,4 +1,4 @@
-import Button, { ButtonType } from "./Button";
+import Button from "./Button";
 import Dialog from "./Dialog";
 
 type Props = {
@@ -32,8 +32,8 @@ const AlertDialog = ({
                     </p>
                 </div>
             )}
-            <div className="sm:flex">
-                <Button type={ButtonType.Danger} onClick={onContinue}>
+            <div className="gap-5 sm:flex sm:gap-3">
+                <Button variant="danger" onClick={onContinue}>
                     {continueLabel}
                 </Button>
                 <Button onClick={onCancel}>{cancelLabel}</Button>

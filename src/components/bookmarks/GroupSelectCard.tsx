@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useGroups } from "../../hooks/useGroups";
 import { GroupContext } from "../../contexts/GroupContext";
-import Button, { ButtonType } from "../ui/Button";
+import Button from "../ui/Button";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
 import { MdClose, MdAdd } from "react-icons/md";
@@ -78,10 +78,9 @@ const GroupSelectCard = () => {
                     </div>
                     <div className="sm:flex">
                         <Button
-                            type={ButtonType.Primary}
+                            variant="primary"
                             className="block w-full"
                             onClick={handleHideSelector}
-                            fluid
                         >
                             Add new group
                         </Button>

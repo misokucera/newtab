@@ -16,6 +16,7 @@
         "@headlessui/react": "^1.7.17",
         "@types/chrome": "^0.0.247",
         "@types/react-beautiful-dnd": "^13.1.5",
+        "class-variance-authority": "^0.7.0",
         "classnames": "^2.3.2",
         "next": "^13.5.5",
         "react": "^18.2.0",
@@ -51,6 +52,10 @@
         "tabWidth": 4,
         "plugins": [
             "prettier-plugin-tailwindcss"
+        ],
+        "tailwindFunctions": [
+            "cva",
+            "classNames"
         ]
     }
 }
