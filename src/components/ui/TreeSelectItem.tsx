@@ -29,10 +29,10 @@ const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
     const isSelected = selectedIds.includes(treeNode.id);
 
     return (
-        <div className="pl-5 relative">
+        <div className="relative pl-5">
             <button
-                className={classNames("px-1.5 py-0.5 mb-0.5 rounded", {
-                    "text-blue-900 bg-blue-100 hover:bg-blue-200 dark:bg-sky-700 dark:text-sky-200 dark:hover:bg-sky-600":
+                className={classNames("mb-0.5 rounded px-1.5 py-0.5", {
+                    "bg-blue-100 text-blue-900 hover:bg-blue-200 dark:bg-sky-700 dark:text-sky-200 dark:hover:bg-sky-600":
                         isSelected,
                     "hover:bg-gray-100 dark:hover:bg-slate-600 dark:hover:text-gray-300":
                         !isSelected,

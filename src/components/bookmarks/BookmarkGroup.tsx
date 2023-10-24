@@ -48,11 +48,11 @@ export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
         >
             <Card className="group">
                 <div
-                    className="flex items-center justify-between mb-2"
+                    className="mb-2 flex items-center justify-between"
                     {...dragHandleProps}
                 >
                     <Title className="truncate">{title}</Title>
-                    <div className="opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
+                    <div className="opacity-0 transition-opacity focus-within:opacity-100 group-hover:opacity-100">
                         <IconButton onClick={handleRemove}>
                             <MdClose size={20} />
                         </IconButton>

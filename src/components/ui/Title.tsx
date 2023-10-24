@@ -8,7 +8,7 @@ type Props = {
 const Title = ({ children, className }: Props) => {
     return (
         <h2
-            className={`p-3 my-0 uppercase text-sm font-normal text-gray-400 ${className}`}
+            className={`my-0 p-3 text-sm font-normal uppercase text-gray-400 ${className}`}
         >
             {children}
         </h2>

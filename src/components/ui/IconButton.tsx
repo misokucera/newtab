@@ -18,7 +18,7 @@ const IconButton = ({
         <button
             onClick={onClick}
             className={classnames(
-                "flex text-gray-500 dark:text-gray-400 rounded-lg p-3 transition duration-150 border-0 bg-white dark:bg-slate-700",
+                "flex rounded-lg border-0 bg-white p-3 text-gray-500 transition duration-150 dark:bg-slate-700 dark:text-gray-400",
                 className,
                 {
                     "opacity-50 hover:opacity-100": transparent,

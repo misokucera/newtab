@@ -56,7 +56,7 @@ const GroupSelectCard = () => {
                 afterLeave={handleAfterSelectorLeave}
             >
                 <Card>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="mb-2 flex items-center justify-between">
                         <Title className="truncate">
                             {selectedGroupNode
                                 ? selectedGroupNode.label
@@ -68,7 +68,7 @@ const GroupSelectCard = () => {
                             </IconButton>
                         </div>
                     </div>
-                    <div className="p-1.5 mt-2 mb-7 text-left">
+                    <div className="mb-7 mt-2 p-1.5 text-left">
                         <p className="text-sm text-gray-500">
                             <TreeSelect
                                 root={groupTree}
@@ -79,7 +79,7 @@ const GroupSelectCard = () => {
                     <div className="sm:flex">
                         <Button
                             type={ButtonType.Primary}
-                            className="w-full block"
+                            className="block w-full"
                             onClick={handleHideSelector}
                             fluid
                         >

@@ -39,8 +39,8 @@ const Button = ({
             className={classnames(
                 getClassesByType(type),
                 className,
-                "mt-2 w-full inline-flex justify-center rounded-md px-4 py-2 text-base font-medium sm:mt-0 sm:text-sm",
-                { "sm:w-auto sm:mr-3": !fluid },
+                "mt-2 inline-flex w-full justify-center rounded-md px-4 py-2 text-base font-medium sm:mt-0 sm:text-sm",
+                { "sm:mr-3 sm:w-auto": !fluid },
             )}
             onClick={onClick}
         >
