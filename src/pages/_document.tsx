@@ -11,7 +11,7 @@ export default function Document() {
                     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                 />
             </Head>
-            <body>
+            <body className="dark:bg-slate-800">
                 <Main />
                 <NextScript />
             </body>

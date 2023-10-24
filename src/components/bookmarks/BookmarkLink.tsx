@@ -33,7 +33,7 @@ export const BookmarkLink = ({
     };
 
     return (
-        <div className="group/link rounded text-gray-500 hover:bg-gray-100">
+        <div className="group/link rounded text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-600 focus-within:bg-gray-100 dark:focus-within:bg-slate-600">
             <div className="flex items-center">
                 <a
                     href={url}
@@ -43,7 +43,7 @@ export const BookmarkLink = ({
                     <img
                         src={getFaviconUrl(url)}
                         alt=""
-                        className="inline-block mr-3 w-5 h-5 p-0.5 rounded-sm bg-white"
+                        className="inline-block mr-3 w-5 h-5 p-0.5 rounded-sm bg-white dark:bg-slate-700"
                     />
                     <p
                         className="text-left m-0 text-sm truncate"
@@ -52,7 +52,7 @@ export const BookmarkLink = ({
                         {title || url}
                     </p>
                 </a>
-                <div className="group-hover/link:block hidden">
+                <div className="group-hover/link:block group-focus-within/link:block hidden">
                     <DeleteBookmarkButton>
                         <MdClose onClick={handleOpenRemoveDialog} size={20} />
                     </DeleteBookmarkButton>

@@ -32,17 +32,19 @@ const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
         <div className="pl-5 relative">
             <button
                 className={classNames("px-1.5 py-0.5 mb-0.5 rounded", {
-                    "text-blue-900 bg-blue-100 hover:bg-blue-200": isSelected,
-                    "hover:bg-gray-100": !isSelected,
+                    "text-blue-900 bg-blue-100 hover:bg-blue-200 dark:bg-sky-700 dark:text-sky-200 dark:hover:bg-sky-600":
+                        isSelected,
+                    "hover:bg-gray-100 dark:hover:bg-slate-600 dark:hover:text-gray-300":
+                        !isSelected,
                 })}
                 onClick={handleSelect}
             >
                 {childrenNodes.length > 0 && (
                     <div className="absolute left-0">
                         {isShowing ? (
-                            <ExpandMoreIcon fontSize="small" />
+                            <ExpandMoreIcon fontSize="18" />
                         ) : (
-                            <ChevronRightIcon fontSize="small" />
+                            <ChevronRightIcon fontSize="18" />
                         )}
                     </div>
                 )}

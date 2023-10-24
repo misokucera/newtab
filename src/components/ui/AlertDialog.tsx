@@ -22,12 +22,14 @@ const AlertDialog = ({
 }: Props) => {
     return (
         <Dialog open={open} onClose={onCancel}>
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
+            <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-300">
                 {title}
             </h3>
             {text && (
                 <div className="mt-2 mb-7">
-                    <p className="text-sm text-gray-500">{text}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {text}
+                    </p>
                 </div>
             )}
             <div className="sm:flex">

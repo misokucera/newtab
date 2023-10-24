@@ -9,7 +9,7 @@ const DeleteBookmarkButton = ({ onClick, children }: Props) => {
     return (
         <button
             onClick={onClick}
-            className="flex p-1.5 rounded rounded-tl-none rounded-bl-none border-0 bg-transparent hover:bg-gray-200 transition"
+            className="flex p-1.5 rounded rounded-tl-none rounded-bl-none border-0 bg-transparent hover:bg-gray-200 dark:hover:bg-slate-800 transition"
         >
             {children}
         </button>
