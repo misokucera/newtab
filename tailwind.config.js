@@ -5,7 +5,12 @@ module.exports = {
         "./src/components/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            boxShadow: {
+                focus: "0 2px 0 0 rgba(252, 211, 77, 1)",
+            },
+        },
     },
     plugins: [],
+    darkMode: "class",
 };
