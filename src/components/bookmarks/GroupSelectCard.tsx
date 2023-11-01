@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import { useGroups } from "../../hooks/useGroups";
-import { GroupContext } from "../../contexts/GroupContext";
-import Button, { ButtonType } from "../ui/Button";
+import { useGroupContext } from "../../contexts/GroupContext";
+import Button from "../ui/Button";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
 import { MdClose, MdAdd } from "react-icons/md";
@@ -11,7 +11,7 @@ import { TreeSelect, TreeNode } from "../ui/TreeSelect";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();
-    const { addGroup } = useContext(GroupContext);
+    const { addGroup } = useGroupContext();
 
     const [showSelector, setShowSelector] = useState(false);
     const [showButton, setShowButton] = useState(true);
@@ -56,7 +56,7 @@ const GroupSelectCard = () => {
                 afterLeave={handleAfterSelectorLeave}
             >
                 <Card>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="mb-2 flex items-center justify-between">
                         <Title className="truncate">
                             {selectedGroupNode
                                 ? selectedGroupNode.label
@@ -68,7 +68,7 @@ const GroupSelectCard = () => {
                             </IconButton>
                         </div>
                     </div>
-                    <div className="p-1.5 mt-2 mb-7 text-left">
+                    <div className="mb-7 mt-2 p-1.5 text-left">
                         <p className="text-sm text-gray-500">
                             <TreeSelect
                                 root={groupTree}
@@ -78,10 +78,9 @@ const GroupSelectCard = () => {
                     </div>
                     <div className="sm:flex">
                         <Button
-                            type={ButtonType.Primary}
-                            className="w-full block"
+                            variant="primary"
+                            className="sm:w-full"
                             onClick={handleHideSelector}
-                            fluid
                         >
                             Add new group
                         </Button>

@@ -1,4 +1,4 @@
-import Button, { ButtonType } from "./Button";
+import Button from "./Button";
 import Dialog from "./Dialog";
 
 type Props = {
@@ -22,19 +22,27 @@ const AlertDialog = ({
 }: Props) => {
     return (
         <Dialog open={open} onClose={onCancel}>
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
+            <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
                 {title}
             </h3>
             {text && (
-                <div className="mt-2 mb-7">
-                    <p className="text-sm text-gray-500">{text}</p>
+                <div className="mb-7 mt-2">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {text}
+                    </p>
                 </div>
             )}
-            <div className="sm:flex">
-                <Button type={ButtonType.Danger} onClick={onContinue}>
+            <div className="flex flex-wrap gap-2">
+                <Button
+                    variant="danger"
+                    className="w-full sm:w-auto"
+                    onClick={onContinue}
+                >
                     {continueLabel}
                 </Button>
-                <Button onClick={onCancel}>{cancelLabel}</Button>
+                <Button className="w-full sm:w-auto" onClick={onCancel}>
+                    {cancelLabel}
+                </Button>
             </div>
         </Dialog>
     );

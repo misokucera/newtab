@@ -1,4 +1,6 @@
+import classnames from "classnames";
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
     onClick?: () => void;
@@ -10,17 +12,24 @@ type Props = {
 const IconButton = ({
     onClick,
     children,
-    className,
+    className = "",
     transparent = false,
 }: Props) => {
-    let classes = `flex text-gray-500 rounded-lg p-3 transition duration-150 border-0 bg-white ${className} `;
-
-    classes += transparent
-        ? "opacity-50 hover:opacity-100"
-        : "hover:bg-gray-100";
-
     return (
-        <button onClick={onClick} className={classes}>
+        <button
+            onClick={onClick}
+            className={twMerge(
+                classnames(
+                    "flex rounded-lg border-0 bg-white p-3 text-gray-500 transition duration-150 dark:bg-slate-700 dark:text-gray-400",
+                    {
+                        "opacity-50 hover:opacity-100": transparent,
+                        "hover:bg-gray-100 dark:hover:bg-slate-600":
+                            !transparent,
+                    },
+                ),
+                className,
+            )}
+        >
             {children}
         </button>
     );

@@ -1,52 +1,62 @@
 {
-  "name": "homepage-extension",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "scripts/export.sh",
-    "lint": "next lint",
-    "analyze": "ANALYZE=true npm run build",
-    "pretty:check": "prettier src/**/*.{ts,tsx,js} --check",
-    "pretty": "prettier src/**/*.{ts,tsx,js} --write"
-  },
-  "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@types/chrome": "^0.0.247",
-    "@types/react-beautiful-dnd": "^13.1.5",
-    "classnames": "^2.3.2",
-    "next": "^13.5.5",
-    "react": "^18.2.0",
-    "react-beautiful-dnd": "^13.1.1",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0",
-    "typescript": "^5.2.2"
-  },
-  "devDependencies": {
-    "@next/bundle-analyzer": "^13.5.5",
-    "@types/node": "20.8.6",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.51.0",
-    "eslint-config-next": "^13.5.5",
-    "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
-    "tailwindcss": "^3.3.3"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "prettier": {
-    "tabWidth": 4
-  }
+    "name": "homepage-extension",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "export": "scripts/export.sh",
+        "lint": "next lint",
+        "analyze": "ANALYZE=true npm run build",
+        "pretty:check": "prettier src/**/*.{ts,tsx,js} --check",
+        "pretty": "prettier src/**/*.{ts,tsx,js} --write"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.17",
+        "@types/chrome": "^0.0.247",
+        "@types/react-beautiful-dnd": "^13.1.5",
+        "class-variance-authority": "^0.7.0",
+        "classnames": "^2.3.2",
+        "next": "^13.5.5",
+        "react": "^18.2.0",
+        "react-beautiful-dnd": "^13.1.1",
+        "react-dom": "^18.2.0",
+        "react-icons": "^4.11.0",
+        "tailwind-merge": "^1.14.0",
+        "typescript": "^5.2.2"
+    },
+    "devDependencies": {
+        "@next/bundle-analyzer": "^13.5.5",
+        "@types/node": "20.8.6",
+        "autoprefixer": "^10.4.16",
+        "eslint": "^8.51.0",
+        "eslint-config-next": "^13.5.5",
+        "postcss": "^8.4.31",
+        "prettier": "^3.0.3",
+        "prettier-plugin-tailwindcss": "^0.5.6",
+        "tailwindcss": "^3.3.3"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "plugins": [
+            "prettier-plugin-tailwindcss"
+        ],
+        "tailwindFunctions": [
+            "cva",
+            "classNames"
+        ]
+    }
 }
