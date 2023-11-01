@@ -42,7 +42,7 @@ export const ThemeProvider = ({ children }: Props) => {
     );
 };
 
-export const useTheme = () => {
+export const useThemeContext = () => {
     const context = React.useContext(ThemeContext);
 
     if (context === null) {

@@ -1,10 +1,10 @@
 import { RadioGroup } from "@headlessui/react";
 import ThemeOption from "./ThemeOption";
-import { useTheme } from "../../contexts/ThemeContext";
+import { useThemeContext } from "../../contexts/ThemeContext";
 import { useSystemDarkTheme } from "../../hooks/useSystemDarkTheme";
 
 const ThemeSwitcher = () => {
-    const { theme, changeTheme } = useTheme();
+    const { theme, changeTheme } = useThemeContext();
     const isSystemDarkModeActive = useSystemDarkTheme();
 
     return (
