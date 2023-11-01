@@ -1,10 +1,10 @@
 import Head from "next/head";
 import "../index.css";
-import "tailwindcss/tailwind.css";
+import { NextPage } from "next";
+import { AppProps } from "next/app";
 
-// TODO: add correct types
-type Props = {
-    Component: any;
+type Props = AppProps & {
+    Component: NextPage;
     pageProps: any;
 };
 
