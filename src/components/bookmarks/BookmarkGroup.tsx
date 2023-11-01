@@ -1,8 +1,7 @@
-import * as React from "react";
 import { BookmarkLink } from "./BookmarkLink";
 import { Bookmark, useGroup } from "../../hooks/useGroup";
-import { useContext, useState } from "react";
-import { GroupContext } from "../../contexts/GroupContext";
+import { useState } from "react";
+import { useGroupContext } from "../../contexts/GroupContext";
 import { MdClose } from "react-icons/md";
 import SortableList, {
     DragHandleProps,
@@ -20,7 +19,7 @@ type Props = {
 
 export const BookmarkGroup = ({ treeId, dragHandleProps }: Props) => {
     const { bookmarks, title, reorderBookmarks } = useGroup(treeId);
-    const { removeGroup } = useContext(GroupContext);
+    const { removeGroup } = useGroupContext();
     const [show, setShow] = useState(true);
 
     const handleRemove = () => {

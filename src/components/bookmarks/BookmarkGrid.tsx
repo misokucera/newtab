@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
 import { BookmarkGroup } from "./BookmarkGroup";
-import { GroupContext } from "../../contexts/GroupContext";
+import { useGroupContext } from "../../contexts/GroupContext";
 import SortableList from "../ui/SortableList";
 import GroupSelectCard from "./GroupSelectCard";
 
 export const BookmarkGrid = () => {
-    const { groups, reorderGroups } = useContext(GroupContext);
+    const { groups, reorderGroups } = useGroupContext();
 
     const handleDragEnd = (sortedGroups: string[]) => {
         reorderGroups(sortedGroups);

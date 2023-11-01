@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import { useGroups } from "../../hooks/useGroups";
-import { GroupContext } from "../../contexts/GroupContext";
+import { useGroupContext } from "../../contexts/GroupContext";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
 import Title from "../ui/Title";
@@ -11,7 +11,7 @@ import { TreeSelect, TreeNode } from "../ui/TreeSelect";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();
-    const { addGroup } = useContext(GroupContext);
+    const { addGroup } = useGroupContext();
 
     const [showSelector, setShowSelector] = useState(false);
     const [showButton, setShowButton] = useState(true);
