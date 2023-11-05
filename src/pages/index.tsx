@@ -1,7 +1,7 @@
-import { BookmarkGrid } from "../components/bookmarks/BookmarkGrid";
+import React from "react";
+import SortableBookmarkGrid from "../components/bookmarks/SortableBookmarkGrid";
 import ThemeSwitcher from "../components/settings/ThemeSwitcher";
 import { GroupProvider } from "../contexts/GroupContext";
-import React from "react";
 import { ThemeProvider } from "../contexts/ThemeContext";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
                 <div className="flex justify-center py-4">
                     <ThemeSwitcher />
                 </div>
-                <BookmarkGrid />
+                <SortableBookmarkGrid />
             </GroupProvider>
         </ThemeProvider>
     );
