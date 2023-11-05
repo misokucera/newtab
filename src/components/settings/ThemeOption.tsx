@@ -14,7 +14,7 @@ const ThemeOption = ({ value, color, children }: Props) => {
     return (
         <RadioGroup.Option
             value={value}
-            className="focus-visible:shadow-focus rounded-full focus-visible:outline-none"
+            className="rounded-full focus-visible:shadow-focus focus-visible:outline-none"
         >
             {({ checked }) => (
                 <div

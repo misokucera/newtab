@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getFaviconUrl } from "../../services/favicons";
 import { Bookmark } from "../../hooks/useGroup";
-import { DragHandleProps } from "../ui/SortableList";
 import { MdClose } from "react-icons/md";
 import DeleteBookmarkButton from "./DeleteBookmarkButton";
 import AlertDialog from "../ui/AlertDialog";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import classNames from "classnames";
 
 type Props = {
     bookmark: Bookmark;
-    dragHandleProps?: DragHandleProps | null;
 };
 
-export const BookmarkLink = ({
-    bookmark: { id, url, title },
-    dragHandleProps,
-}: Props) => {
+export const BookmarkLink = ({ bookmark: { id, url, title } }: Props) => {
     const [isOpenRemoveDialog, setIsOpenRemoveDialog] = useState(false);
+
+    const {
+        isDragging,
+        listeners,
+        attributes,
+        setNodeRef,
+        setActivatorNodeRef,
+        transform,
+        transition,
+    } = useSortable({ id });
+
+    const style = {
+        transform: CSS.Translate.toString(transform),
+        transition,
+    };
 
     const handleOpenRemoveDialog = () => {
         setIsOpenRemoveDialog(true);
@@ -33,12 +46,21 @@ export const BookmarkLink = ({
     };
 
     return (
-        <div className="group/link rounded text-gray-500 focus-within:bg-gray-100 hover:bg-gray-100 dark:text-gray-400 dark:focus-within:bg-slate-600 dark:hover:bg-slate-600">
+        <div
+            ref={setNodeRef}
+            style={style}
+            className={classNames(
+                "group/link rounded text-gray-500 focus-within:bg-gray-100 hover:bg-gray-100 dark:text-gray-400 dark:focus-within:bg-slate-600 dark:hover:bg-slate-600",
+                { "pointer-events-none": isDragging },
+            )}
+        >
             <div className="flex items-center">
                 <a
                     href={url}
                     className="flex flex-1 items-center overflow-x-hidden p-1.5 no-underline"
-                    {...dragHandleProps}
+                    {...listeners}
+                    {...attributes}
+                    ref={setActivatorNodeRef}
                 >
                     <img
                         src={getFaviconUrl(url)}
