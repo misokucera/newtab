@@ -52,7 +52,10 @@ export const BookmarkLink = ({ bookmark: { id, url, title } }: Props) => {
             style={style}
             className={classNames(
                 "group/link rounded text-gray-500 focus-within:bg-gray-100 hover:bg-gray-100 dark:text-gray-400 dark:focus-within:bg-slate-600 dark:hover:bg-slate-600",
-                { "pointer-events-none": isDragging || active },
+                {
+                    "pointer-events-none": isDragging || active,
+                    "bg-gray-100 opacity-60": isDragging,
+                },
             )}
         >
             <div className="flex items-center">
