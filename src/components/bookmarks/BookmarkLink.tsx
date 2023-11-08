@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getFaviconUrl } from "../../services/favicons";
 import { Bookmark } from "../../hooks/useGroup";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdDragHandle } from "react-icons/md";
 import DeleteBookmarkButton from "./DeleteBookmarkButton";
 import AlertDialog from "../ui/AlertDialog";
 import { useSortable } from "@dnd-kit/sortable";
@@ -55,18 +55,23 @@ export const BookmarkLink = ({ bookmark: { id, url, title } }: Props) => {
             )}
         >
             <div className="flex items-center">
-                <a
-                    href={url}
-                    className="flex flex-1 items-center overflow-x-hidden p-1.5 no-underline"
+                <button
                     {...listeners}
                     {...attributes}
                     ref={setActivatorNodeRef}
+                    className="hidden rounded rounded-br-none rounded-tr-none border-0 bg-transparent p-1.5 transition hover:bg-gray-200 group-hover/link:flex dark:hover:bg-slate-800"
                 >
-                    <img
-                        src={getFaviconUrl(url)}
-                        alt=""
-                        className="mr-3 inline-block h-5 w-5 rounded-sm bg-white p-0.5 dark:bg-slate-700"
-                    />
+                    <MdDragHandle size="20" />
+                </button>
+                <img
+                    src={getFaviconUrl(url)}
+                    alt=""
+                    className="m-1.5 block inline-block h-5 w-5 rounded-sm bg-white p-0.5 group-hover/link:hidden dark:bg-slate-700"
+                />
+                <a
+                    href={url}
+                    className="flex flex-1 items-center overflow-x-hidden p-1.5 no-underline"
+                >
                     <p
                         className="m-0 truncate text-left text-sm"
                         title={title || url}
