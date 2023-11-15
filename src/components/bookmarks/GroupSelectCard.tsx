@@ -55,7 +55,7 @@ const GroupSelectCard = () => {
                 show={showSelector}
                 afterLeave={handleAfterSelectorLeave}
             >
-                <Card>
+                <Card className="mx-4">
                     <div className="mb-2 flex items-center justify-between">
                         <Title className="truncate">
                             {selectedGroupNode

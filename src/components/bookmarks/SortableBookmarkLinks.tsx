@@ -19,7 +19,8 @@ import {
 } from "@dnd-kit/sortable";
 import { BookmarkLink } from "./BookmarkLink";
 import { useState } from "react";
-import { MdDragHandle } from "react-icons/md";
+import Draggable from "../ui/Draggable";
+import BookmarkLinkOverlay from "./BookmarkLinkOverlay";
 
 type Props = {
     bookmarks: Bookmark[];
@@ -71,17 +72,18 @@ const SortableLinks = ({ bookmarks, onReorder }: Props) => {
                 strategy={verticalListSortingStrategy}
             >
                 {bookmarks.map((bookmark) => (
-                    <BookmarkLink bookmark={bookmark} key={bookmark.id} />
+                    <Draggable
+                        id={bookmark.id}
+                        key={bookmark.id}
+                        className="rounded bg-gray-100"
+                    >
+                        <BookmarkLink bookmark={bookmark} />
+                    </Draggable>
                 ))}
             </SortableContext>
             <DragOverlay>
                 {draggedItem ? (
-                    <div className="flex gap-3 rounded bg-gray-200 p-1.5 text-sm text-gray-500">
-                        <MdDragHandle size="20" className="shrink-0" />
-                        <div className="truncate">
-                            {draggedItem.title || draggedItem.url}
-                        </div>
-                    </div>
+                    <BookmarkLinkOverlay bookmark={draggedItem} />
                 ) : null}
             </DragOverlay>
         </DndContext>

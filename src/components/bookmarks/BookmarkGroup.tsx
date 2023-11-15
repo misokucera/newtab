@@ -6,10 +6,8 @@ import Card from "../ui/Card";
 import Title from "../ui/Title";
 import IconButton from "../ui/IconButton";
 import FadeAndScaleTransition from "../ui/transitions/FadeAndScaleTransition";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import classNames from "classnames";
 import SortableLinks from "./SortableBookmarkLinks";
+import { useDraggable } from "@dnd-kit/core";
 
 type Props = {
     treeId: string;
@@ -20,20 +18,9 @@ export const BookmarkGroup = ({ treeId }: Props) => {
     const { removeGroup } = useGroupContext();
     const [show, setShow] = useState(true);
 
-    const {
-        isDragging,
-        attributes,
-        listeners,
-        setNodeRef,
-        setActivatorNodeRef,
-        transform,
-        transition,
-    } = useSortable({ id: treeId });
-
-    const style = {
-        transform: CSS.Translate.toString(transform),
-        transition,
-    };
+    const { listeners, attributes, setActivatorNodeRef } = useDraggable({
+        id: treeId,
+    });
 
     const handleRemove = () => {
         setShow(false);
@@ -49,13 +36,7 @@ export const BookmarkGroup = ({ treeId }: Props) => {
     };
 
     return (
-        <div
-            ref={setNodeRef}
-            style={style}
-            className={classNames("flex", {
-                "opacity-70": isDragging,
-            })}
-        >
+        <div>
             <FadeAndScaleTransition
                 show={show}
                 afterLeave={() => removeGroup(treeId)}
@@ -63,10 +44,7 @@ export const BookmarkGroup = ({ treeId }: Props) => {
                 <Card className="group">
                     <div className="mb-2 flex items-center">
                         <div
-                            className={classNames("flex-1", {
-                                "cursor-grab": !isDragging,
-                                "cursor-grabbing": isDragging,
-                            })}
+                            className="flex-1 cursor-grab"
                             {...attributes}
                             {...listeners}
                             ref={setActivatorNodeRef}
