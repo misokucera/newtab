@@ -93,7 +93,7 @@ const GroupSelectCard = () => {
             >
                 <IconButton
                     onClick={handleHideButton}
-                    className="ml-2 shadow-sm"
+                    className="mx-4 shadow-sm"
                     transparent
                 >
                     <MdAdd size={20} />
