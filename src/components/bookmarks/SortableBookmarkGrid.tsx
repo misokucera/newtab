@@ -52,7 +52,7 @@ const SortableBookmarkGrid = () => {
     };
 
     return (
-        <div className="flex justify-center">
+        <div className="inline-flex min-w-full justify-center">
             <DndContext
                 onDragEnd={handleDragEnd}
                 onDragStart={handleDragStart}
