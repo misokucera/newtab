@@ -10,7 +10,7 @@ const Card = ({ children, className }: Props) => {
     return (
         <div
             className={twMerge(
-                "mx-2 w-80 rounded-lg bg-white p-3 shadow-sm dark:bg-slate-700",
+                "w-80 rounded-lg bg-white p-3 shadow-sm dark:bg-slate-700",
                 className,
             )}
         >

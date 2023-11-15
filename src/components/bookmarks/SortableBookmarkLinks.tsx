@@ -1,6 +1,8 @@
 import {
     DndContext,
     DragEndEvent,
+    DragOverlay,
+    DragStartEvent,
     KeyboardSensor,
     MouseSensor,
     TouchSensor,
@@ -16,10 +18,9 @@ import {
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { BookmarkLink } from "./BookmarkLink";
-import {
-    restrictToParentElement,
-    restrictToVerticalAxis,
-} from "@dnd-kit/modifiers";
+import { useState } from "react";
+import Draggable from "../ui/Draggable";
+import BookmarkLinkOverlay from "./BookmarkLinkOverlay";
 
 type Props = {
     bookmarks: Bookmark[];
@@ -27,6 +28,8 @@ type Props = {
 };
 
 const SortableLinks = ({ bookmarks, onReorder }: Props) => {
+    const [draggedItem, setDraggedItem] = useState<Bookmark | null>(null);
+
     const sensors = useSensors(
         useSensor(MouseSensor),
         useSensor(TouchSensor),
@@ -44,23 +47,45 @@ const SortableLinks = ({ bookmarks, onReorder }: Props) => {
         const reorderedBookmarks = arrayMove(bookmarks, oldIndex, newIndex);
 
         onReorder(reorderedBookmarks);
+        setDraggedItem(null);
+    };
+
+    const handleDragStart = (event: DragStartEvent) => {
+        const draggedBookmark = bookmarks.find(
+            ({ id }) => id === event.active.id,
+        );
+
+        if (draggedBookmark) {
+            setDraggedItem(draggedBookmark);
+        }
     };
 
     return (
         <DndContext
             onDragEnd={handleDragEnd}
+            onDragStart={handleDragStart}
             collisionDetection={closestCenter}
             sensors={sensors}
-            modifiers={[restrictToVerticalAxis, restrictToParentElement]}
         >
             <SortableContext
                 items={bookmarks}
                 strategy={verticalListSortingStrategy}
             >
                 {bookmarks.map((bookmark) => (
-                    <BookmarkLink bookmark={bookmark} key={bookmark.id} />
+                    <Draggable
+                        id={bookmark.id}
+                        key={bookmark.id}
+                        className="rounded bg-gray-100"
+                    >
+                        <BookmarkLink bookmark={bookmark} />
+                    </Draggable>
                 ))}
             </SortableContext>
+            <DragOverlay>
+                {draggedItem ? (
+                    <BookmarkLinkOverlay bookmark={draggedItem} />
+                ) : null}
+            </DragOverlay>
         </DndContext>
     );
 };
