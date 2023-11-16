@@ -6,7 +6,6 @@ export default function Document() {
         <Html>
             <Head>
                 <link rel="icon" href="/favicon.png" type="image/png" />
-                <link rel="manifest" href="/manifest.json" />
                 <link
                     rel="preload"
                     as="script"
