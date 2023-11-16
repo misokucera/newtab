@@ -8,18 +8,22 @@ export default function Document() {
                 <link rel="icon" href="/favicon.png" type="image/png" />
                 <link rel="manifest" href="/manifest.json" />
                 <link
+                    rel="preload"
+                    as="script"
+                    href="theme.js"
+                    crossOrigin=""
+                />
+                <script
+                    type="text/javascript"
+                    src="theme.js"
+                    crossOrigin=""
+                ></script>
+                <link
                     rel="stylesheet"
                     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                 />
             </Head>
             <body className="transition-colors dark:bg-slate-800">
-                <Script
-                    id="theme"
-                    strategy="beforeInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: "if (localStorage?.theme === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {document.documentElement.classList.add('dark');} else {document.documentElement.classList.remove('dark');}",
-                    }}
-                />
                 <Main />
                 <NextScript />
             </body>
