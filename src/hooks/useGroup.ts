@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMockedBookmarks } from "../api/mocks/bookmarks.mock";
-import { isDev } from "../services/environment";
+import { getMockedBookmarks, getMockedName } from "../api/mocks/bookmarks.mock";
 
 export type Bookmark = {
     id: string;
@@ -20,6 +19,8 @@ const mapTreeToBookmark = ({ id, title, url, index }: any) => ({
     index,
 });
 
+const supportsBookmarks = () => chrome?.bookmarks !== undefined;
+
 export function useGroup(groupId: string): {
     bookmarks: Bookmark[];
     title: string;
@@ -29,10 +30,7 @@ export function useGroup(groupId: string): {
     const [title, setTitle] = useState<string>("");
 
     useEffect(() => {
-        if (isDev()) {
-            setBookmarks(getMockedBookmarks());
-            setTitle("Nástroje");
-        } else {
+        if (supportsBookmarks()) {
             const updateBookmarks = () => {
                 chrome.bookmarks.getSubTree(groupId, (trees: any) => {
                     const tree = trees[0];
@@ -67,6 +65,9 @@ export function useGroup(groupId: string): {
 
                 chrome.bookmarks.onChildrenReordered.removeListener(listener);
             };
+        } else {
+            setBookmarks(getMockedBookmarks());
+            setTitle(getMockedName);
         }
     }, [groupId]);
 
@@ -74,7 +75,7 @@ export function useGroup(groupId: string): {
         setBookmarks(bookmarks);
 
         bookmarks.forEach((bookmark) => {
-            if (!isDev()) {
+            if (supportsBookmarks()) {
                 chrome.bookmarks.move(bookmark.id, {
                     parentId: groupId,
                     index: bookmark.index,
