@@ -15,3 +15,5 @@ export const getMockedBookmarks = () => {
 export const getMockedGroups = () => {
     return JSON.parse(mockedBookmarkDirectories);
 };
+
+export const getMockedName = "Tools";

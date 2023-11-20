@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { getMockedGroups } from "../api/mocks/bookmarks.mock";
-import { isDev } from "../services/environment";
 
 export type BookmarkTreeNode = {
     id: string;
     label: string;
     children?: BookmarkTreeNode[];
 };
+
+const supportsBookmarks = () => chrome?.bookmarks !== undefined;
 
 const getTreeNode = (tree: any) => {
     if (!tree || !tree.children || tree.children.length === 0) {
@@ -33,10 +34,10 @@ export function useGroups(): BookmarkTreeNode | null {
     };
 
     useEffect(() => {
-        if (isDev()) {
-            setTreeNode(getMockedGroups());
+        if (supportsBookmarks()) {
+            chrome.bookmarks.getTree((trees) => parseTrees(trees));
         } else {
-            chrome.bookmarks.getTree((trees: any) => parseTrees(trees));
+            setTreeNode(getMockedGroups());
         }
     }, []);
 

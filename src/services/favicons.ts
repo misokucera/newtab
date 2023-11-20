@@ -1,10 +1,10 @@
-import { isDev } from "./environment";
+const supportsChromeRuntime = () => chrome?.runtime !== undefined;
 
 export const getFaviconUrl = (url: string): string => {
-    if (isDev()) {
-        return `https://www.google.com/s2/favicons?domain=${url}&sz=24`;
-    } else {
+    if (supportsChromeRuntime()) {
         return getLocalFaviconUrl(url);
+    } else {
+        return `https://www.google.com/s2/favicons?domain=${url}&sz=24`;
     }
 };
 

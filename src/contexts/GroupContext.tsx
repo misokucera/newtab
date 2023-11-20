@@ -26,19 +26,19 @@ export const GroupProvider = ({ children }: Props) => {
         const updatedGroups = [...filteredGroups, groupId];
 
         setGroups(updatedGroups);
-        store(storageKey, groups);
+        store(storageKey, updatedGroups);
     };
 
     const removeGroup = (groupId: string) => {
         const filteredGroups = groups.filter((value) => value !== groupId);
 
         setGroups(filteredGroups);
-        store(storageKey, groups);
+        store(storageKey, filteredGroups);
     };
 
     const reorderGroups = (orderedGroups: string[]) => {
         setGroups(orderedGroups);
-        store(storageKey, groups);
+        store(storageKey, orderedGroups);
     };
 
     return (
