@@ -1,5 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
+import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
     return (
@@ -17,12 +16,8 @@ export default function Document() {
                     src="theme.js"
                     crossOrigin=""
                 ></script>
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-                />
             </Head>
-            <body className="transition-colors dark:bg-slate-800">
+            <body className="bg-gray-100 p-4 transition-colors dark:bg-slate-800">
                 <Main />
                 <NextScript />
             </body>
