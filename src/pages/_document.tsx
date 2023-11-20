@@ -1,25 +1,23 @@
-import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
+import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
     return (
         <Html>
             <Head>
                 <link rel="icon" href="/favicon.png" type="image/png" />
-                <link rel="manifest" href="/manifest.json" />
                 <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+                    rel="preload"
+                    as="script"
+                    href="theme.js"
+                    crossOrigin=""
                 />
+                <script
+                    type="text/javascript"
+                    src="theme.js"
+                    crossOrigin=""
+                ></script>
             </Head>
-            <body className="transition-colors dark:bg-slate-800">
-                <Script
-                    id="theme"
-                    strategy="beforeInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: "if (localStorage?.theme === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {document.documentElement.classList.add('dark');} else {document.documentElement.classList.remove('dark');}",
-                    }}
-                />
+            <body className="bg-gray-100 p-4 transition-colors dark:bg-slate-800">
                 <Main />
                 <NextScript />
             </body>

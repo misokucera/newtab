@@ -1,16 +1,18 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "New tab",
     "description": "Display bookmark directories on new tab page",
     "version": "0.1.0",
     "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" },
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
-    "content_security_policy": "script-src 'self' 'sha256-AhWM0olJqK6H+Kol0mwefH4PVdRVCJB2TvzWzT0vTUI='",
-    "permissions": ["bookmarks", "storage", "chrome://favicon/"]
+    "permissions": ["bookmarks", "storage", "favicon"],
+    "web_accessible_resources": [
+        {
+            "resources": ["_favicon/*"],
+            "matches": ["<all_urls>"],
+            "extension_ids": ["*"]
+        }
+    ]
 }

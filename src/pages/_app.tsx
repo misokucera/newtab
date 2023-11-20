@@ -2,6 +2,12 @@ import Head from "next/head";
 import "../index.css";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
+import { Inter } from "@next/font/google";
+
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-inter",
+});
 
 type Props = AppProps & {
     Component: NextPage;
@@ -23,7 +29,9 @@ export default function App({ Component, pageProps }: Props) {
 
                 <title>New tab</title>
             </Head>
-            <Component {...pageProps} />
+            <main className={`${inter.variable} font-sans`}>
+                <Component {...pageProps} />
+            </main>
         </>
     );
 }
