@@ -45,7 +45,7 @@ export const BookmarkLink = ({ bookmark: { id, url, title } }: Props) => {
                 <img
                     src={getFaviconUrl(url)}
                     alt=""
-                    className="m-1.5 block inline-block h-5 w-5 rounded-sm bg-white p-0.5 group-focus-within/link:hidden group-hover/link:hidden dark:bg-slate-700"
+                    className="m-1.5 inline-block h-5 w-5 rounded-sm bg-white p-0.5 group-focus-within/link:hidden group-hover/link:hidden dark:bg-slate-700"
                 />
                 <a
                     href={url}
