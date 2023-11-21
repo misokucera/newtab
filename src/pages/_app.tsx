@@ -2,7 +2,7 @@ import Head from "next/head";
 import "../index.css";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 
 const inter = Inter({
     subsets: ["latin"],
