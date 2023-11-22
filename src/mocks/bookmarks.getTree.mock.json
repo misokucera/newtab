@@ -1,0 +1,142 @@
+[
+    {
+        "children": [
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "dateAdded": 1686644655147,
+                                "id": "409",
+                                "index": 0,
+                                "parentId": "408",
+                                "title": "Test page 1",
+                                "url": "https://testpage123.test/"
+                            },
+                            {
+                                "dateAdded": 1579182759602,
+                                "dateLastUsed": 1682670947795,
+                                "id": "10",
+                                "index": 1,
+                                "parentId": "408",
+                                "title": "Test page 2",
+                                "url": "https://testpage123.test/"
+                            },
+                            {
+                                "dateAdded": 1686644892572,
+                                "id": "413",
+                                "index": 2,
+                                "parentId": "408",
+                                "title": "Test page 3",
+                                "url": "https://testpage123.test/"
+                            }
+                        ],
+                        "dateAdded": 1686644395843,
+                        "dateGroupModified": 1690030771924,
+                        "id": "408",
+                        "index": 0,
+                        "parentId": "1",
+                        "title": "Group 1"
+                    },
+                    {
+                        "children": [
+                            {
+                                "dateAdded": 1639470297314,
+                                "dateLastUsed": 1686643478155,
+                                "id": "351",
+                                "index": 0,
+                                "parentId": "405",
+                                "title": "Test page 1",
+                                "url": "https://testpage123.test"
+                            },
+                            {
+                                "dateAdded": 1639244287163,
+                                "dateLastUsed": 1686643409009,
+                                "id": "350",
+                                "index": 1,
+                                "parentId": "405",
+                                "title": "Test page 2",
+                                "url": "https://testpage123.test"
+                            },
+                            {
+                                "dateAdded": 1686644735258,
+                                "id": "410",
+                                "index": 2,
+                                "parentId": "405",
+                                "title": "Test page 3",
+                                "url": "https://testpage123.test"
+                            },
+                            {
+                                "dateAdded": 1686644813389,
+                                "id": "411",
+                                "index": 3,
+                                "parentId": "405",
+                                "title": "Test page 4",
+                                "url": "https://testpage123.test"
+                            },
+                            {
+                                "dateAdded": 1686644866145,
+                                "id": "412",
+                                "index": 4,
+                                "parentId": "405",
+                                "title": "Test page 5",
+                                "url": "https://testpage123.test"
+                            },
+                            {
+                                "dateAdded": 1700491704783,
+                                "id": "453",
+                                "index": 5,
+                                "parentId": "405",
+                                "title": "Test page 6",
+                                "url": "https://testpage123.test"
+                            }
+                        ],
+                        "dateAdded": 1686644201298,
+                        "dateGroupModified": 1700491715451,
+                        "id": "405",
+                        "index": 1,
+                        "parentId": "1",
+                        "title": "Group 2"
+                    },
+                    {
+                        "children": [
+                            {
+                                "dateAdded": 1554793597894,
+                                "dateLastUsed": 1686642324474,
+                                "id": "149",
+                                "index": 0,
+                                "parentId": "403",
+                                "title": "Test page 1",
+                                "url": "https://testpage123.test"
+                            },
+                            {
+                                "dateAdded": 1659625072381,
+                                "dateLastUsed": 1686643108987,
+                                "id": "120",
+                                "index": 1,
+                                "parentId": "403",
+                                "title": "Test page 2",
+                                "url": "https://testpage123.test"
+                            }
+                        ],
+                        "dateAdded": 1686644173795,
+                        "dateGroupModified": 1689317202685,
+                        "id": "403",
+                        "index": 2,
+                        "parentId": "1",
+                        "title": "Group 3"
+                    }
+                ],
+                "dateAdded": 1686317759113,
+                "dateGroupModified": 1694788450763,
+                "id": "1",
+                "index": 0,
+                "parentId": "0",
+                "title": "Parent group"
+            }
+        ],
+        "dateAdded": 1700294283880,
+        "id": "0",
+        "title": ""
+    }
+]

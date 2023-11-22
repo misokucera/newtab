@@ -24,9 +24,7 @@ export const BookmarkLink = ({ bookmark: { id, url, title } }: Props) => {
     };
 
     const handleRemove = () => {
-        if (chrome.bookmarks) {
-            chrome.bookmarks.remove(id);
-        }
+        chrome.bookmarks.remove(id);
 
         setIsOpenRemoveDialog(false);
     };

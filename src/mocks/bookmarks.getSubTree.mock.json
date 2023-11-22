@@ -1,0 +1,46 @@
+[
+    {
+        "children": [
+            {
+                "dateAdded": 1639470297314,
+                "dateLastUsed": 1686643478155,
+                "id": "351",
+                "index": 0,
+                "parentId": "405",
+                "title": "Google",
+                "url": "https://google.com"
+            },
+            {
+                "dateAdded": 1639244287163,
+                "dateLastUsed": 1686643409009,
+                "id": "350",
+                "index": 1,
+                "parentId": "405",
+                "title": "Facebook",
+                "url": "https://facebook.com"
+            },
+            {
+                "dateAdded": 1686644735258,
+                "id": "410",
+                "index": 2,
+                "parentId": "405",
+                "title": "LinkedIn - Example of a very long title that should be truncated with an ellipsis",
+                "url": "https://linkedin.com"
+            },
+            {
+                "dateAdded": 1686644813389,
+                "id": "411",
+                "index": 3,
+                "parentId": "405",
+                "title": "Youtube - Long video title that should be truncated with an ellipsis",
+                "url": "https://youtube.com"
+            }
+        ],
+        "dateAdded": 1686644201298,
+        "dateGroupModified": 1700491715451,
+        "id": "405",
+        "index": 1,
+        "parentId": "1",
+        "title": "Group 1"
+    }
+]
