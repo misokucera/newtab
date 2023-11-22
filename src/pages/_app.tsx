@@ -1,20 +1,20 @@
 import Head from "next/head";
 import "../index.css";
-import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { Inter } from "next/font/google";
+import { mockChromeAPI } from "../mocks/chrome";
+import { isDevelopment } from "../services/environment";
+
+if (isDevelopment()) {
+    mockChromeAPI();
+}
 
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
 });
 
-type Props = AppProps & {
-    Component: NextPage;
-    pageProps: any;
-};
-
-export default function App({ Component, pageProps }: Props) {
+export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
