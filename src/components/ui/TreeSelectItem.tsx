@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { TreeNode } from "./TreeSelect";
 import {
     MdExpandMore as ExpandMoreIcon,
     MdChevronRight as ChevronRightIcon,
 } from "react-icons/md";
 import { Transition } from "@headlessui/react";
 import classNames from "classnames";
+import { TreeNode } from "../../hooks/useGroups";
 
 type Props = {
     treeNode: TreeNode;
@@ -31,12 +31,15 @@ const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
     return (
         <div className="relative pl-5">
             <button
-                className={classNames("mb-0.5 rounded px-1.5 py-0.5", {
-                    "bg-blue-100 text-blue-900 hover:bg-blue-200 dark:bg-sky-700 dark:text-sky-200 dark:hover:bg-sky-600":
-                        isSelected,
-                    "hover:bg-gray-100 dark:hover:bg-slate-600 dark:hover:text-gray-300":
-                        !isSelected,
-                })}
+                className={classNames(
+                    "mb-0.5 max-w-full rounded px-1.5 py-0.5",
+                    {
+                        "bg-blue-100 text-blue-900 hover:bg-blue-200 dark:bg-sky-700 dark:text-sky-200 dark:hover:bg-sky-600":
+                            isSelected,
+                        "hover:bg-gray-100 dark:hover:bg-slate-600 dark:hover:text-gray-300":
+                            !isSelected,
+                    },
+                )}
                 onClick={handleSelect}
             >
                 {childrenNodes.length > 0 && (
@@ -48,7 +51,10 @@ const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
                         )}
                     </div>
                 )}
-                {treeNode.label}
+                <div className="flex items-center gap-1">
+                    <div className="flex-1 truncate">{treeNode.label}</div>
+                    <div>({treeNode.linkCount})</div>
+                </div>
             </button>
             {childrenNodes.length > 0 && (
                 <Transition show={isShowing}>

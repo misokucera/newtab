@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGroups } from "../../hooks/useGroups";
+import { TreeNode, useGroups } from "../../hooks/useGroups";
 import { useGroupContext } from "../../contexts/GroupContext";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
@@ -7,7 +7,7 @@ import Title from "../ui/Title";
 import { MdClose, MdAdd } from "react-icons/md";
 import IconButton from "../ui/IconButton";
 import FadeAndScaleTransition from "../ui/transitions/FadeAndScaleTransition";
-import { TreeSelect, TreeNode } from "../ui/TreeSelect";
+import { TreeSelect } from "../ui/TreeSelect";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();

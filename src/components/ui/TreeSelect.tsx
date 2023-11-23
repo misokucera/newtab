@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import TreeSelectItem from "./TreeSelectItem";
-
-export type TreeNode = {
-    id: string;
-    label: string;
-    children?: TreeNode[];
-};
+import { TreeNode } from "../../hooks/useGroups";
 
 type Props = {
     root: TreeNode;

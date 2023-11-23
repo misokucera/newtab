@@ -96,7 +96,7 @@
                         "id": "405",
                         "index": 1,
                         "parentId": "1",
-                        "title": "Group 2"
+                        "title": "Group with long name and many pages"
                     },
                     {
                         "children": [
@@ -117,6 +117,43 @@
                                 "parentId": "403",
                                 "title": "Test page 2",
                                 "url": "https://testpage123.test"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "dateAdded": 1554793597894,
+                                        "dateLastUsed": 1686642324474,
+                                        "id": "149",
+                                        "index": 0,
+                                        "parentId": "499",
+                                        "title": "Test page 1",
+                                        "url": "https://testpage123.test"
+                                    },
+                                    {
+                                        "dateAdded": 1659625072381,
+                                        "dateLastUsed": 1686643108987,
+                                        "id": "150",
+                                        "index": 1,
+                                        "parentId": "499",
+                                        "title": "Test page 2",
+                                        "url": "https://testpage123.test"
+                                    },
+                                    {
+                                        "dateAdded": 1659625072381,
+                                        "dateLastUsed": 1686643108987,
+                                        "id": "151",
+                                        "index": 1,
+                                        "parentId": "499",
+                                        "title": "Test page 3",
+                                        "url": "https://testpage123.test"
+                                    }
+                                ],
+                                "dateAdded": 1686644173795,
+                                "dateGroupModified": 1689317202685,
+                                "id": "499",
+                                "index": 2,
+                                "parentId": "1",
+                                "title": "Inner group"
                             }
                         ],
                         "dateAdded": 1686644173795,
