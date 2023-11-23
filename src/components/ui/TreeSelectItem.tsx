@@ -9,11 +9,11 @@ import { TreeNode } from "../../hooks/useGroups";
 
 type Props = {
     treeNode: TreeNode;
-    selectedIds: string[];
+    selectedNodeId: string | null;
     onSelect?: (node: TreeNode) => void;
 };
 
-const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
+const TreeSelectItem = ({ treeNode, onSelect, selectedNodeId }: Props) => {
     const [isShowing, setIsShowing] = useState(false);
 
     const childrenNodes = treeNode.children ?? [];
@@ -26,7 +26,7 @@ const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
         }
     };
 
-    const isSelected = selectedIds.includes(treeNode.id);
+    const isSelected = treeNode.id === selectedNodeId;
 
     return (
         <div className="relative pl-5">
@@ -62,7 +62,7 @@ const TreeSelectItem = ({ treeNode, onSelect, selectedIds }: Props) => {
                         <TreeSelectItem
                             key={node.id}
                             treeNode={node}
-                            selectedIds={selectedIds}
+                            selectedNodeId={selectedNodeId}
                             onSelect={onSelect}
                         />
                     ))}

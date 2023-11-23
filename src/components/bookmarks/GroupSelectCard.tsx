@@ -11,7 +11,7 @@ import { TreeSelect } from "../ui/TreeSelect";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();
-    const { addGroup } = useGroupContext();
+    const { addGroup, groups } = useGroupContext();
 
     const [showSelector, setShowSelector] = useState(false);
     const [showButton, setShowButton] = useState(true);
@@ -42,7 +42,11 @@ const GroupSelectCard = () => {
     };
 
     const handleSelection = (node: TreeNode) => {
-        setSelectedGroupNode(node);
+        if (!groups.includes(node.id)) {
+            setSelectedGroupNode(node);
+        } else {
+            setSelectedGroupNode(null);
+        }
     };
 
     if (!groupTree) {
@@ -73,11 +77,13 @@ const GroupSelectCard = () => {
                             <TreeSelect
                                 root={groupTree}
                                 onSelect={handleSelection}
+                                selectedNode={selectedGroupNode}
                             />
                         </p>
                     </div>
                     <div className="sm:flex">
                         <Button
+                            disabled={!selectedGroupNode}
                             variant="primary"
                             className="sm:w-full"
                             onClick={handleHideSelector}
