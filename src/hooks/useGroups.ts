@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
-export type BookmarkTreeNode = {
+export type TreeNode = {
     id: string;
     label: string;
-    children?: BookmarkTreeNode[];
+    linkCount: number;
+    children?: TreeNode[];
 };
 
 const getTreeNode = (tree: any) => {
@@ -13,6 +14,7 @@ const getTreeNode = (tree: any) => {
     return {
         id: tree.id,
         label: tree.title,
+        linkCount: tree.children.filter((child: any) => child.url).length,
         children: tree.children
             ? tree.children
                   .map((child: any) => getTreeNode(child))
@@ -21,8 +23,8 @@ const getTreeNode = (tree: any) => {
     };
 };
 
-export function useGroups(): BookmarkTreeNode | null {
-    const [treeNode, setTreeNode] = useState<BookmarkTreeNode | null>(null);
+export function useGroups(): TreeNode | null {
+    const [treeNode, setTreeNode] = useState<TreeNode | null>(null);
 
     const parseTrees = (trees: any) => {
         const root = trees[0];

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useGroups } from "../../hooks/useGroups";
+import { useRef, useState } from "react";
+import { TreeNode, useGroups } from "../../hooks/useGroups";
 import { useGroupContext } from "../../contexts/GroupContext";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
@@ -7,11 +7,12 @@ import Title from "../ui/Title";
 import { MdClose, MdAdd } from "react-icons/md";
 import IconButton from "../ui/IconButton";
 import FadeAndScaleTransition from "../ui/transitions/FadeAndScaleTransition";
-import { TreeSelect, TreeNode } from "../ui/TreeSelect";
+import { TreeSelect } from "../ui/TreeSelect";
 
 const GroupSelectCard = () => {
     const groupTree = useGroups();
-    const { addGroup } = useGroupContext();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { addGroup, groups } = useGroupContext();
 
     const [showSelector, setShowSelector] = useState(false);
     const [showButton, setShowButton] = useState(true);
@@ -25,6 +26,7 @@ const GroupSelectCard = () => {
 
     const handleHideSelector = () => {
         setShowSelector(false);
+        setShowButton(true);
     };
 
     const handleAfterSelectorLeave = () => {
@@ -32,8 +34,6 @@ const GroupSelectCard = () => {
             addGroup(selectedGroupNode.id);
             setSelectedGroupNode(null);
         }
-
-        setShowButton(true);
     };
 
     const handleClose = () => {
@@ -50,46 +50,64 @@ const GroupSelectCard = () => {
     }
 
     return (
-        <>
+        <div ref={containerRef}>
             <FadeAndScaleTransition
                 show={showSelector}
                 afterLeave={handleAfterSelectorLeave}
+                afterEnter={() => {
+                    containerRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        inline: "end",
+                    });
+                }}
             >
-                <Card className="mx-4">
-                    <div className="mb-2 flex items-center justify-between">
-                        <Title className="truncate">
-                            {selectedGroupNode
-                                ? selectedGroupNode.label
-                                : "Select bookmark directory"}
-                        </Title>
-                        <div>
-                            <IconButton onClick={handleClose}>
-                                <MdClose size={20} />
-                            </IconButton>
+                <div>
+                    <Card className="mx-4">
+                        <div className="mb-2 flex items-center justify-between">
+                            <Title className="truncate">
+                                {selectedGroupNode
+                                    ? selectedGroupNode.label
+                                    : "Select bookmark directory"}
+                            </Title>
+                            <div>
+                                <IconButton onClick={handleClose}>
+                                    <MdClose size={20} />
+                                </IconButton>
+                            </div>
                         </div>
-                    </div>
-                    <div className="mb-7 mt-2 p-1.5 text-left">
-                        <p className="text-sm text-gray-500">
-                            <TreeSelect
-                                root={groupTree}
-                                onSelect={handleSelection}
-                            />
-                        </p>
-                    </div>
-                    <div className="sm:flex">
-                        <Button
-                            variant="primary"
-                            className="sm:w-full"
-                            onClick={handleHideSelector}
-                        >
-                            Add new group
-                        </Button>
-                    </div>
-                </Card>
+                        <div className="mb-7 mt-2 p-1.5 text-left">
+                            <p className="text-sm text-gray-500">
+                                <TreeSelect
+                                    root={groupTree}
+                                    onSelect={handleSelection}
+                                    disabledNodes={groups}
+                                    selectedNode={selectedGroupNode}
+                                />
+                            </p>
+                        </div>
+                        <div className="sm:flex">
+                            <Button
+                                disabled={!selectedGroupNode}
+                                variant="primary"
+                                className="sm:w-full"
+                                onClick={handleHideSelector}
+                            >
+                                Add new group
+                            </Button>
+                        </div>
+                    </Card>
+                </div>
             </FadeAndScaleTransition>
             <FadeAndScaleTransition
                 show={showButton}
-                afterLeave={() => setShowSelector(true)}
+                afterLeave={() => {
+                    setShowSelector(true);
+                }}
+                afterEnter={() => {
+                    containerRef.current?.scrollIntoView({
+                        inline: "end",
+                    });
+                }}
             >
                 <IconButton
                     onClick={handleHideButton}
@@ -99,7 +117,7 @@ const GroupSelectCard = () => {
                     <MdAdd size={20} />
                 </IconButton>
             </FadeAndScaleTransition>
-        </>
+        </div>
     );
 };
 
