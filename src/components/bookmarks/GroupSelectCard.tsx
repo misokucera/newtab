@@ -42,11 +42,7 @@ const GroupSelectCard = () => {
     };
 
     const handleSelection = (node: TreeNode) => {
-        if (!groups.includes(node.id)) {
-            setSelectedGroupNode(node);
-        } else {
-            setSelectedGroupNode(null);
-        }
+        setSelectedGroupNode(node);
     };
 
     if (!groupTree) {
@@ -84,6 +80,7 @@ const GroupSelectCard = () => {
                                 <TreeSelect
                                     root={groupTree}
                                     onSelect={handleSelection}
+                                    disabledNodes={groups}
                                     selectedNode={selectedGroupNode}
                                 />
                             </p>

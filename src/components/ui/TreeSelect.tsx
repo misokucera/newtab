@@ -5,10 +5,16 @@ import { TreeNode } from "../../hooks/useGroups";
 type Props = {
     root: TreeNode;
     selectedNode: TreeNode | null;
+    disabledNodes: string[];
     onSelect?: (node: TreeNode) => void;
 };
 
-export const TreeSelect = ({ root, selectedNode, onSelect }: Props) => {
+export const TreeSelect = ({
+    root,
+    selectedNode,
+    disabledNodes,
+    onSelect,
+}: Props) => {
     const handleSelect = (node: TreeNode) => {
         if (onSelect) {
             onSelect(node);
@@ -24,6 +30,7 @@ export const TreeSelect = ({ root, selectedNode, onSelect }: Props) => {
                         key={node.id}
                         treeNode={node}
                         onSelect={handleSelect}
+                        disabledNodes={disabledNodes}
                         selectedNodeId={selectedNode?.id ?? null}
                     />
                 ))}
