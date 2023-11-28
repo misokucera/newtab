@@ -26,7 +26,6 @@ const GroupSelectCard = () => {
 
     const handleHideSelector = () => {
         setShowSelector(false);
-        setShowButton(true);
     };
 
     const handleAfterSelectorLeave = () => {
@@ -34,6 +33,8 @@ const GroupSelectCard = () => {
             addGroup(selectedGroupNode.id);
             setSelectedGroupNode(null);
         }
+
+        setShowButton(true);
     };
 
     const handleClose = () => {

@@ -1,7 +1,6 @@
 import { BookmarkGroup } from "./BookmarkGroup";
 import { useGroupContext } from "../../contexts/GroupContext";
 import {
-    Active,
     DndContext,
     DragEndEvent,
     DragOverlay,
@@ -18,14 +17,16 @@ import {
     arrayMove,
     sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
-import GroupSelectCard from "./GroupSelectCard";
 import { useState } from "react";
 import Draggable from "../ui/Draggable";
 import BookmarkGroupOverlay from "./BookmarkGroupOverlay";
+import EmptyBookmarkGrid from "./EmptyBookmarkGrid";
+import GroupSelectCard from "./GroupSelectCard";
 
 const SortableBookmarkGrid = () => {
     const [draggedItem, setDraggedItem] = useState<string | null>(null);
     const { groups, reorderGroups } = useGroupContext();
+    const [showEmptyGroupGrid, setShowEmptyGroupGrid] = useState(false);
 
     const sensors = useSensors(
         useSensor(MouseSensor),
@@ -53,28 +54,34 @@ const SortableBookmarkGrid = () => {
 
     return (
         <div className="inline-flex min-w-full justify-center">
-            <DndContext
-                onDragEnd={handleDragEnd}
-                onDragStart={handleDragStart}
-                collisionDetection={closestCenter}
-                sensors={sensors}
-            >
-                <SortableContext items={groups}>
-                    <div className="inline-flex gap-4">
-                        {groups.map((groupId) => (
-                            <Draggable id={groupId} key={groupId}>
-                                <BookmarkGroup treeId={groupId} />
-                            </Draggable>
-                        ))}
-                    </div>
-                </SortableContext>
-                <DragOverlay>
-                    {draggedItem ? (
-                        <BookmarkGroupOverlay treeId={draggedItem} />
-                    ) : null}
-                </DragOverlay>
-            </DndContext>
-            <GroupSelectCard />
+            {groups.length === 0 ? (
+                <EmptyBookmarkGrid />
+            ) : (
+                <>
+                    <DndContext
+                        onDragEnd={handleDragEnd}
+                        onDragStart={handleDragStart}
+                        collisionDetection={closestCenter}
+                        sensors={sensors}
+                    >
+                        <SortableContext items={groups}>
+                            <div className="inline-flex gap-4">
+                                {groups.map((groupId) => (
+                                    <Draggable id={groupId} key={groupId}>
+                                        <BookmarkGroup treeId={groupId} />
+                                    </Draggable>
+                                ))}
+                            </div>
+                        </SortableContext>
+                        <DragOverlay>
+                            {draggedItem ? (
+                                <BookmarkGroupOverlay treeId={draggedItem} />
+                            ) : null}
+                        </DragOverlay>
+                    </DndContext>
+                    <GroupSelectCard />
+                </>
+            )}
         </div>
     );
 };
